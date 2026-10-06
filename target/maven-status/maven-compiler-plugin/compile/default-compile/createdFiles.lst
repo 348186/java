@@ -1,0 +1,10 @@
+com\example\mybatisdemo\WebMvcConfig.class
+com\example\entity\User.class
+com\example\mybatisdemo\HelloApplication.class
+com\example\mapper\EmpMapper.class
+com\example\mapper\UserMapperAnnotation.class
+com\example\mybatisdemo\EmpController.class
+com\example\mybatisdemo\HelloResource.class
+com\example\mybatisdemo\MyBatisConfig.class
+com\example\entity\Emp.class
+com\example\mapper\UserMapper.class

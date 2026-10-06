@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.EmpMapper">
+
+    <resultMap id="EmpResultMap" type="com.example.entity.Emp">
+        <id     property="empId"    column="emp_id"/>
+        <result property="empName"  column="emp_name"/>
+        <result property="gender"   column="gender"/>
+        <result property="dept"     column="dept"/>
+        <result property="post"     column="post"/>
+        <result property="salary"   column="salary"/>
+        <result property="hireDate" column="hire_date"/>
+        <result property="status"   column="status"/>
+    </resultMap>
+
+    <insert id="insertEmp" parameterType="com.example.entity.Emp"
+            useGeneratedKeys="true" keyProperty="empId">
+        INSERT INTO emp(emp_name, gender, dept, post, salary, hire_date, status)
+        VALUES(#{empName}, #{gender}, #{dept}, #{post}, #{salary}, #{hireDate}, #{status})
+    </insert>
+
+    <select id="selectByIdWithMap" resultMap="EmpResultMap">
+        SELECT * FROM emp WHERE emp_id = #{id}
+    </select>
+
+</mapper>
