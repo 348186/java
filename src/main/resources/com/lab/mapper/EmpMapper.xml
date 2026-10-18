@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lab.mapper.EmpMapper">
+
+    <!-- 自定义结果映射：解决列名与属性名不一致（emp_name -> empName、hire_date -> hireDate） -->
+    <resultMap id="BaseResultMap" type="Emp">
+        <id property="empId" column="emp_id"/>
+        <result property="empName" column="emp_name"/>
+        <result property="gender" column="gender"/>
+        <result property="dept" column="dept"/>
+        <result property="post" column="post"/>
+        <result property="salary" column="salary"/>
+        <result property="hireDate" column="hire_date"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 全字段片段，避免 SELECT * -->
+    <sql id="BaseColumns">
+        emp_id, emp_name, gender, dept, post, salary, hire_date, status
+    </sql>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM emp
+        ORDER BY emp_id ASC
+    </select>
+
+    <select id="findByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM emp
+        WHERE emp_id = #{empId}
+    </select>
+
+    <!-- 任务 3.1：多条件组合查询，&lt;where&gt; 自动剔除开头多余的 AND/OR -->
+    <select id="queryByExample" parameterType="Emp" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM emp
+        <where>
+            <if test="empName != null and empName.trim() != ''">
+                AND emp_name LIKE CONCAT('%', #{empName}, '%')
+            </if>
+            <if test="gender != null and gender != ''">
+                AND gender = #{gender}
+            </if>
+            <if test="dept != null and dept != ''">
+                AND dept = #{dept}
+            </if>
+            <if test="post != null and post != ''">
+                AND post = #{post}
+            </if>
+            <if test="salary != null">
+                AND salary &gt;= #{salary}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY emp_id ASC
+    </select>
+
+    <!-- 任务 3.4：分支选择，命中即返回，不再叠加后续条件 -->
+    <select id="queryByPriority" parameterType="Emp" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM emp
+        <choose>
+            <when test="empName != null and empName.trim() != ''">
+                WHERE emp_name = #{empName}
+            </when>
+            <when test="dept != null and dept != ''">
+                WHERE dept = #{dept}
+            </when>
+            <otherwise>
+                WHERE status = 1
+            </otherwise>
+        </choose>
+        ORDER BY emp_id ASC
+    </select>
+
+    <!-- 新增并回填自增主键 -->
+    <insert id="addEmp" parameterType="Emp" useGeneratedKeys="true" keyProperty="empId">
+        INSERT INTO emp (emp_name, gender, dept, post, salary, hire_date, status)
+        VALUES (#{empName}, #{gender}, #{dept}, #{post}, #{salary}, #{hireDate}, #{status})
+    </insert>
+
+    <!-- 任务 3.3：批量新增 -->
+    <insert id="addInBatch">
+        INSERT INTO emp (emp_name, gender, dept, post, salary, hire_date, status)
+        VALUES
+        <foreach collection="empList" item="item" separator=",">
+            (#{item.empName}, #{item.gender}, #{item.dept}, #{item.post},
+            #{item.salary}, #{item.hireDate}, #{item.status})
+        </foreach>
+    </insert>
+
+    <update id="modifyEmp" parameterType="Emp">
+        UPDATE emp
+        SET emp_name = #{empName},
+            gender = #{gender},
+            dept = #{dept},
+            post = #{post},
+            salary = #{salary},
+            hire_date = #{hireDate},
+            status = #{status}
+        WHERE emp_id = #{empId}
+    </update>
+
+    <!-- 任务 3.2：动态更新，&lt;set&gt; 自动剔除结尾多余逗号 -->
+    <update id="modifySelective" parameterType="Emp">
+        UPDATE emp
+        <set>
+            <if test="empName != null and empName.trim() != ''">emp_name = #{empName},</if>
+            <if test="gender != null and gender != ''">gender = #{gender},</if>
+            <if test="dept != null and dept != ''">dept = #{dept},</if>
+            <if test="post != null and post != ''">post = #{post},</if>
+            <if test="salary != null">salary = #{salary},</if>
+            <if test="hireDate != null">hire_date = #{hireDate},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE emp_id = #{empId}
+    </update>
+
+    <delete id="removeEmp" parameterType="int">
+        DELETE FROM emp WHERE emp_id = #{empId}
+    </delete>
+
+    <!-- 任务 3.3：批量删除 -->
+    <delete id="removeInBatch">
+        DELETE FROM emp WHERE emp_id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
