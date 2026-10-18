@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 连接四要素外置，避免硬编码 -->
+    <properties resource="jdbc.properties"/>
+
+    <settings>
+        <!-- 驼峰自动映射：emp_name -> empName -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 日志实现：SLF4J（底层绑定 Logback），便于查看完整 SQL -->
+        <setting name="logImpl" value="SLF4J"/>
+        <!-- 参数为空时显式指定 jdbcType，避免 MySQL 报 "No typehandler" -->
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+
+    <!-- 实体类别名包，映射文件中可直接写 Emp -->
+    <typeAliases>
+        <package name="com.lab.entity"/>
+    </typeAliases>
+
+    <!-- 分页插件：自定义构造器完成内部拦截器装配（MP 3.5.x 推荐写法） -->
+    <plugins>
+        <plugin interceptor="com.lab.plugin.MpPaginationPlugin"/>
+    </plugins>
+
+    <environments default="lab">
+        <environment id="lab">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 按包扫描 Mapper 接口，接口与 XML 需同名同包 -->
+    <mappers>
+        <package name="com.lab.mapper"/>
+    </mappers>
+
+</configuration>

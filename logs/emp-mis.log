@@ -1,0 +1,181 @@
+2026-10-18 23:47:06.589 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2026-10-18 23:47:06.624 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Registered plugin: 'com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor@55b8dbda'
+2026-10-18 23:47:06.766 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Parsed mapper file: 'file [D:\Java实验\mybatis-demo\target\classes\com\lab\mapper\EmpMapper.xml]'
+2026-10-18 23:47:06.769 DEBUG [main] c.b.m.core.toolkit.Sequence - Initialization Sequence datacenterId:0 workerId:5
+2026-10-18 23:47:07.088 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.103 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.119 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.122 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.122 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.124 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.237 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2026-10-18 23:47:07.238 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Registered plugin: 'com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor@7cdbaa50'
+2026-10-18 23:47:07.264 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Parsed mapper file: 'file [D:\Java实验\mybatis-demo\target\classes\com\lab\mapper\EmpMapper.xml]'
+2026-10-18 23:47:07.300 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.300 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.303 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.312 DEBUG [main] com.lab.mapper.EmpMapper.insert - ==>  Preparing: INSERT INTO emp ( emp_name, gender, dept, post, salary, hire_date, status ) VALUES ( ?, ?, ?, ?, ?, ?, ? )
+2026-10-18 23:47:07.318 DEBUG [main] com.lab.mapper.EmpMapper.insert - ==> Parameters: 事务-回滚测试(String), 男(String), 测试部(String), 临时岗(String), 6000(BigDecimal), 2025-05-01(LocalDate), 1(Integer)
+2026-10-18 23:47:07.322 DEBUG [main] com.lab.mapper.EmpMapper.insert - <==    Updates: 1
+2026-10-18 23:47:07.330 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.331 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.333 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.335 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp
+2026-10-18 23:47:07.335 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==> Parameters: 
+2026-10-18 23:47:07.339 DEBUG [main] com.lab.mapper.EmpMapper.selectList - <==      Total: 14
+2026-10-18 23:47:07.410 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration
+2026-10-18 23:47:07.411 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Registered plugin: 'com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor@2f894ad9'
+2026-10-18 23:47:07.431 DEBUG [main] c.b.m.e.s.MybatisSqlSessionFactoryBean - Parsed mapper file: 'file [D:\Java实验\mybatis-demo\target\classes\com\lab\mapper\EmpMapper.xml]'
+2026-10-18 23:47:07.494 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp WHERE (dept = ?)
+2026-10-18 23:47:07.495 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 研发部(String)
+2026-10-18 23:47:07.496 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.537 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM emp WHERE (dept = ?)
+2026-10-18 23:47:07.538 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - ==> Parameters: 研发部(String)
+2026-10-18 23:47:07.538 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - <==      Total: 1
+2026-10-18 23:47:07.541 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp WHERE (dept = ?) ORDER BY emp_id DESC LIMIT ?
+2026-10-18 23:47:07.542 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==> Parameters: 研发部(String), 2(Long)
+2026-10-18 23:47:07.543 DEBUG [main] com.lab.mapper.EmpMapper.selectList - <==      Total: 2
+2026-10-18 23:47:07.547 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM emp
+2026-10-18 23:47:07.548 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - ==> Parameters: 
+2026-10-18 23:47:07.550 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - <==      Total: 1
+2026-10-18 23:47:07.550 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp ORDER BY emp_id DESC LIMIT ?
+2026-10-18 23:47:07.550 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==> Parameters: 5(Long)
+2026-10-18 23:47:07.552 DEBUG [main] com.lab.mapper.EmpMapper.selectList - <==      Total: 5
+2026-10-18 23:47:07.639 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_name = ? ORDER BY emp_id ASC
+2026-10-18 23:47:07.640 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - ==> Parameters: 王强(String)
+2026-10-18 23:47:07.641 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - <==      Total: 1
+2026-10-18 23:47:07.641 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE dept = ? ORDER BY emp_id ASC
+2026-10-18 23:47:07.642 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - ==> Parameters: 人事部(String)
+2026-10-18 23:47:07.643 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - <==      Total: 2
+2026-10-18 23:47:07.643 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE status = 1 ORDER BY emp_id ASC
+2026-10-18 23:47:07.644 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - ==> Parameters: 
+2026-10-18 23:47:07.647 DEBUG [main] c.l.mapper.EmpMapper.queryByPriority - <==      Total: 11
+2026-10-18 23:47:07.650 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp WHERE (status = ?)
+2026-10-18 23:47:07.650 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 1(Integer)
+2026-10-18 23:47:07.651 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.655 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE dept = ? ORDER BY emp_id ASC
+2026-10-18 23:47:07.655 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==> Parameters: 研发部(String)
+2026-10-18 23:47:07.657 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - <==      Total: 5
+2026-10-18 23:47:07.659 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp WHERE (dept = ?)
+2026-10-18 23:47:07.659 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 研发部(String)
+2026-10-18 23:47:07.660 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.660 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE gender = ? AND dept = ? ORDER BY emp_id ASC
+2026-10-18 23:47:07.661 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==> Parameters: 女(String), 研发部(String)
+2026-10-18 23:47:07.662 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - <==      Total: 2
+2026-10-18 23:47:07.664 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE salary >= ? ORDER BY emp_id ASC
+2026-10-18 23:47:07.664 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==> Parameters: 12000(BigDecimal)
+2026-10-18 23:47:07.665 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - <==      Total: 4
+2026-10-18 23:47:07.666 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.667 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.668 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.668 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp ORDER BY emp_id ASC
+2026-10-18 23:47:07.668 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==> Parameters: 
+2026-10-18 23:47:07.670 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - <==      Total: 14
+2026-10-18 23:47:07.673 DEBUG [main] com.lab.mapper.EmpMapper.findAll - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp ORDER BY emp_id ASC
+2026-10-18 23:47:07.673 DEBUG [main] com.lab.mapper.EmpMapper.findAll - ==> Parameters: 
+2026-10-18 23:47:07.675 DEBUG [main] com.lab.mapper.EmpMapper.findAll - <==      Total: 14
+2026-10-18 23:47:07.677 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.677 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.679 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.682 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.683 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==> Parameters: 2(Integer)
+2026-10-18 23:47:07.684 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - <==      Total: 1
+2026-10-18 23:47:07.684 DEBUG [main] com.lab.mapper.EmpMapper.modifyEmp - ==>  Preparing: UPDATE emp SET emp_name = ?, gender = ?, dept = ?, post = ?, salary = ?, hire_date = ?, status = ? WHERE emp_id = ?
+2026-10-18 23:47:07.685 DEBUG [main] com.lab.mapper.EmpMapper.modifyEmp - ==> Parameters: 李娜(String), 女(String), 研发部(String), 前端工程师(String), 13500(BigDecimal), 2024-08-15(LocalDate), 1(Integer), 2(Integer)
+2026-10-18 23:47:07.686 DEBUG [main] com.lab.mapper.EmpMapper.modifyEmp - <==    Updates: 1
+2026-10-18 23:47:07.688 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.688 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==> Parameters: 2(Integer)
+2026-10-18 23:47:07.689 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - <==      Total: 1
+2026-10-18 23:47:07.689 DEBUG [main] com.lab.mapper.EmpMapper.modifyEmp - ==>  Preparing: UPDATE emp SET emp_name = ?, gender = ?, dept = ?, post = ?, salary = ?, hire_date = ?, status = ? WHERE emp_id = ?
+2026-10-18 23:47:07.690 DEBUG [main] com.lab.mapper.EmpMapper.modifyEmp - ==> Parameters: 李娜(String), 女(String), 研发部(String), 前端工程师(String), 10000.00(BigDecimal), 2024-08-15(LocalDate), 1(Integer), 2(Integer)
+2026-10-18 23:47:07.691 DEBUG [main] com.lab.mapper.EmpMapper.modifyEmp - <==    Updates: 1
+2026-10-18 23:47:07.692 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.692 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==> Parameters: 2(Integer)
+2026-10-18 23:47:07.693 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - <==      Total: 1
+2026-10-18 23:47:07.696 DEBUG [main] com.lab.mapper.EmpMapper.addInBatch - ==>  Preparing: INSERT INTO emp (emp_name, gender, dept, post, salary, hire_date, status) VALUES (?, ?, ?, ?, ?, ?, ?) , (?, ?, ?, ?, ?, ?, ?)
+2026-10-18 23:47:07.697 DEBUG [main] com.lab.mapper.EmpMapper.addInBatch - ==> Parameters: 批量-甲(String), 女(String), 批量测试部(String), 临时岗(String), 9000(BigDecimal), 2025-01-01(LocalDate), 1(Integer), 批量-乙(String), 男(String), 批量测试部(String), 临时岗(String), 9100(BigDecimal), 2025-01-02(LocalDate), 1(Integer)
+2026-10-18 23:47:07.698 DEBUG [main] com.lab.mapper.EmpMapper.addInBatch - <==    Updates: 2
+2026-10-18 23:47:07.699 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE dept = ? ORDER BY emp_id ASC
+2026-10-18 23:47:07.699 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==> Parameters: 批量测试部(String)
+2026-10-18 23:47:07.701 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - <==      Total: 2
+2026-10-18 23:47:07.702 DEBUG [main] c.lab.mapper.EmpMapper.removeInBatch - ==>  Preparing: DELETE FROM emp WHERE emp_id IN ( ? , ? )
+2026-10-18 23:47:07.702 DEBUG [main] c.lab.mapper.EmpMapper.removeInBatch - ==> Parameters: 26(Integer), 27(Integer)
+2026-10-18 23:47:07.702 DEBUG [main] c.lab.mapper.EmpMapper.removeInBatch - <==    Updates: 2
+2026-10-18 23:47:07.703 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE dept = ? ORDER BY emp_id ASC
+2026-10-18 23:47:07.704 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - ==> Parameters: 批量测试部(String)
+2026-10-18 23:47:07.705 DEBUG [main] c.l.mapper.EmpMapper.queryByExample - <==      Total: 0
+2026-10-18 23:47:07.707 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.707 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==> Parameters: 1(Integer)
+2026-10-18 23:47:07.707 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - <==      Total: 1
+2026-10-18 23:47:07.710 DEBUG [main] com.lab.mapper.EmpMapper.addEmp - ==>  Preparing: INSERT INTO emp (emp_name, gender, dept, post, salary, hire_date, status) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-10-18 23:47:07.711 DEBUG [main] com.lab.mapper.EmpMapper.addEmp - ==> Parameters: 临时-新增(String), 女(String), 测试部(String), 临时岗(String), 9000(BigDecimal), 2025-01-01(LocalDate), 1(Integer)
+2026-10-18 23:47:07.712 DEBUG [main] com.lab.mapper.EmpMapper.addEmp - <==    Updates: 1
+2026-10-18 23:47:07.715 DEBUG [main] com.lab.mapper.EmpMapper.removeEmp - ==>  Preparing: DELETE FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.715 DEBUG [main] com.lab.mapper.EmpMapper.removeEmp - ==> Parameters: 28(Integer)
+2026-10-18 23:47:07.716 DEBUG [main] com.lab.mapper.EmpMapper.removeEmp - <==    Updates: 1
+2026-10-18 23:47:07.718 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.719 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==> Parameters: 28(Integer)
+2026-10-18 23:47:07.720 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - <==      Total: 0
+2026-10-18 23:47:07.723 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.724 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==> Parameters: 3(Integer)
+2026-10-18 23:47:07.725 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - <==      Total: 1
+2026-10-18 23:47:07.726 DEBUG [main] c.l.mapper.EmpMapper.modifySelective - ==>  Preparing: UPDATE emp SET dept = ? WHERE emp_id = ?
+2026-10-18 23:47:07.726 DEBUG [main] c.l.mapper.EmpMapper.modifySelective - ==> Parameters: 市场二部(String), 3(Integer)
+2026-10-18 23:47:07.727 DEBUG [main] c.l.mapper.EmpMapper.modifySelective - <==    Updates: 1
+2026-10-18 23:47:07.730 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.730 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==> Parameters: 3(Integer)
+2026-10-18 23:47:07.731 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - <==      Total: 1
+2026-10-18 23:47:07.732 DEBUG [main] c.l.mapper.EmpMapper.modifySelective - ==>  Preparing: UPDATE emp SET dept = ? WHERE emp_id = ?
+2026-10-18 23:47:07.733 DEBUG [main] c.l.mapper.EmpMapper.modifySelective - ==> Parameters: 市场部(String), 3(Integer)
+2026-10-18 23:47:07.734 DEBUG [main] c.l.mapper.EmpMapper.modifySelective - <==    Updates: 1
+2026-10-18 23:47:07.736 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==>  Preparing: SELECT emp_id, emp_name, gender, dept, post, salary, hire_date, status FROM emp WHERE emp_id = ?
+2026-10-18 23:47:07.736 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - ==> Parameters: 3(Integer)
+2026-10-18 23:47:07.737 DEBUG [main] c.l.m.EmpMapper.findByPrimaryKey - <==      Total: 1
+2026-10-18 23:47:07.741 DEBUG [main] c.l.mapper.EmpMapper.selectBatchIds - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp WHERE emp_id IN ( ? , ? , ? )
+2026-10-18 23:47:07.741 DEBUG [main] c.l.mapper.EmpMapper.selectBatchIds - ==> Parameters: 1(Integer), 2(Integer), 3(Integer)
+2026-10-18 23:47:07.744 DEBUG [main] c.l.mapper.EmpMapper.selectBatchIds - <==      Total: 3
+2026-10-18 23:47:07.746 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.746 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.749 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.749 DEBUG [main] com.lab.mapper.EmpMapper.insert - ==>  Preparing: INSERT INTO emp ( emp_name, gender, dept, post, salary, hire_date, status ) VALUES ( ?, ?, ?, ?, ?, ?, ? )
+2026-10-18 23:47:07.750 DEBUG [main] com.lab.mapper.EmpMapper.insert - ==> Parameters: 临时-MP(String), 男(String), 测试部(String), 临时岗(String), 8800(BigDecimal), 2025-03-01(LocalDate), 1(Integer)
+2026-10-18 23:47:07.752 DEBUG [main] com.lab.mapper.EmpMapper.insert - <==    Updates: 1
+2026-10-18 23:47:07.756 DEBUG [main] com.lab.mapper.EmpMapper.updateById - ==>  Preparing: UPDATE emp SET emp_name=?, gender=?, dept=?, post=?, salary=?, hire_date=?, status=? WHERE emp_id=?
+2026-10-18 23:47:07.756 DEBUG [main] com.lab.mapper.EmpMapper.updateById - ==> Parameters: 临时-MP(String), 男(String), 测试部(String), 临时岗(String), 9900(BigDecimal), 2025-03-01(LocalDate), 1(Integer), 29(Integer)
+2026-10-18 23:47:07.757 DEBUG [main] com.lab.mapper.EmpMapper.updateById - <==    Updates: 1
+2026-10-18 23:47:07.760 DEBUG [main] com.lab.mapper.EmpMapper.selectById - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp WHERE emp_id=?
+2026-10-18 23:47:07.760 DEBUG [main] com.lab.mapper.EmpMapper.selectById - ==> Parameters: 29(Integer)
+2026-10-18 23:47:07.761 DEBUG [main] com.lab.mapper.EmpMapper.selectById - <==      Total: 1
+2026-10-18 23:47:07.762 DEBUG [main] com.lab.mapper.EmpMapper.deleteById - ==>  Preparing: DELETE FROM emp WHERE emp_id=?
+2026-10-18 23:47:07.763 DEBUG [main] com.lab.mapper.EmpMapper.deleteById - ==> Parameters: 29(Integer)
+2026-10-18 23:47:07.764 DEBUG [main] com.lab.mapper.EmpMapper.deleteById - <==    Updates: 1
+2026-10-18 23:47:07.765 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.766 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.768 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.770 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.771 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.772 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.772 DEBUG [main] com.lab.mapper.EmpMapper.selectById - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp WHERE emp_id=?
+2026-10-18 23:47:07.773 DEBUG [main] com.lab.mapper.EmpMapper.selectById - ==> Parameters: 1(Integer)
+2026-10-18 23:47:07.774 DEBUG [main] com.lab.mapper.EmpMapper.selectById - <==      Total: 1
+2026-10-18 23:47:07.774 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp
+2026-10-18 23:47:07.774 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==> Parameters: 
+2026-10-18 23:47:07.775 DEBUG [main] com.lab.mapper.EmpMapper.selectList - <==      Total: 14
+2026-10-18 23:47:07.779 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp WHERE (dept = ? AND status = ?) ORDER BY emp_id ASC
+2026-10-18 23:47:07.780 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==> Parameters: 研发部(String), 1(Integer)
+2026-10-18 23:47:07.781 DEBUG [main] com.lab.mapper.EmpMapper.selectList - <==      Total: 5
+2026-10-18 23:47:07.785 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp WHERE (status = ? AND salary >= ?) ORDER BY salary DESC
+2026-10-18 23:47:07.786 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==> Parameters: 1(Integer), 9000(BigDecimal)
+2026-10-18 23:47:07.787 DEBUG [main] com.lab.mapper.EmpMapper.selectList - <==      Total: 9
+2026-10-18 23:47:07.788 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp WHERE (status = ? AND salary >= ?) ORDER BY salary DESC
+2026-10-18 23:47:07.788 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 1(Integer), 9000(BigDecimal)
+2026-10-18 23:47:07.789 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.792 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM emp
+2026-10-18 23:47:07.792 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - ==> Parameters: 
+2026-10-18 23:47:07.794 DEBUG [main] com.lab.mapper.EmpMapper.selectCount - <==      Total: 1
+2026-10-18 23:47:07.796 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM emp
+2026-10-18 23:47:07.796 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - ==> Parameters: 
+2026-10-18 23:47:07.798 DEBUG [main] c.l.m.EmpMapper.selectList_mpCount - <==      Total: 1
+2026-10-18 23:47:07.799 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==>  Preparing: SELECT emp_id,emp_name,gender,dept,post,salary,hire_date,status FROM emp LIMIT ?
+2026-10-18 23:47:07.799 DEBUG [main] com.lab.mapper.EmpMapper.selectList - ==> Parameters: 3(Long)
+2026-10-18 23:47:07.800 DEBUG [main] com.lab.mapper.EmpMapper.selectList - <==      Total: 3
