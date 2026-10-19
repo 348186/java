@@ -10,15 +10,20 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
  * 员工实体：与 ssm_emp.emp 表一一对应。
- * 说明：hireDate 使用 LocalDate（JDK8 时间 API），由 MyBatis 内置类型处理器直接支持。
+ * 说明 1：hireDate 使用 LocalDate（JDK8 时间 API），由 MyBatis 内置类型处理器直接支持。
+ * 说明 2：实现 Serializable —— MyBatis 二级缓存以序列化方式保存数据，
+ *        实体不可序列化会在写入二级缓存时报 NotSerializableException。
  */
 @TableName("emp")
-public class Emp {
+public class Emp implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /** 员工编号，数据库自增并回填 */
     @TableId(value = "emp_id", type = IdType.AUTO)

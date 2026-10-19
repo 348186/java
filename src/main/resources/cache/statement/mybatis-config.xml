@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--
+      一级缓存对照实验：把 localCacheScope 改为 STATEMENT。
+      效果：每条语句执行完立即清空本地缓存，
+      于是「同一个 SqlSession 里连续两次相同查询」也会发两次 SQL。
+      这是唯一可以让一级缓存失效而不改动代码的方式。
+    -->
+
+    <properties resource="jdbc.properties"/>
+
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+        <!-- 同步关闭二级缓存，让观察到的差异只来自 localCacheScope -->
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="localCacheScope" value="STATEMENT"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.lab.entity"/>
+    </typeAliases>
+
+    <environments default="cacheLab">
+        <environment id="cacheLab">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/lab/cache/EmpCacheMapper.xml"/>
+    </mappers>
+
+</configuration>
