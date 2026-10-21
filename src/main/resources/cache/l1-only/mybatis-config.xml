@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--
+      纯一级缓存实验配置：cacheEnabled = false。
+      这样 photographer namespace 上的 <cache> 完全不生效，结果只有在 SqlSession 内部复用，
+      可以干净地观察「Session 内复用 / 跨 Session 失效 / 增删改清空」等行为；
+      否则一级缓存失效后往往被二级缓存接住，看不出两者差异。
+      注：MybatisSessionUtil 使用的主配置是 resources/mybatis-config.xml（实验一），
+      本目录下的配置专为实验三缓存机制服务，彼此互不干扰。
+    -->
+
+    <properties resource="jdbc.properties"/>
+
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.lab.entity"/>
+    </typeAliases>
+
+    <environments default="cacheLab">
+        <environment id="cacheLab">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/lab/cache/PhotographerCacheMapper.xml"/>
+    </mappers>
+
+</configuration>

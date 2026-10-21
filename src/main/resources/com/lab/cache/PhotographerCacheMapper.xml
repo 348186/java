@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lab.cache.PhotographerCacheMapper">
+
+    <!--
+      实验三（MyBatis 缓存机制）—— 二级缓存的开启方式之一：XML 的 <cache/> 标签。
+      type 指定为本工程自研的 TimedLruCache（带 TTL 的 LRU），size / ttlSeconds 由 <property> 注入。
+      内置回收策略（LRU/FIFO/SOFT/WEAK）只能二选一且无过期时间，这也是自定义实现存在的理由。
+    -->
+    <cache type="com.lab.cache.TimedLruCache">
+        <property name="size" value="512"/>
+        <property name="ttlSeconds" value="60"/>
+    </cache>
+
+    <resultMap id="PhotographerResultMap" type="Photographer">
+        <id property="photographerId" column="photographer_id"/>
+        <result property="photographerName" column="photographer_name"/>
+        <result property="gender" column="gender"/>
+        <result property="studio" column="studio"/>
+        <result property="specialty" column="specialty"/>
+        <result property="dayRate" column="day_rate"/>
+        <result property="joinDate" column="join_date"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        photographer_id, photographer_name, gender, studio, specialty, day_rate, join_date, status
+    </sql>
+
+    <!-- useCache="true"：结果存入二级缓存（select 的默认值就是 true，此处显式写出便于对照） -->
+    <select id="findByPrimaryKey" resultMap="PhotographerResultMap" useCache="true" flushCache="false">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM photographer
+        WHERE photographer_id = #{photographerId}
+    </select>
+
+    <select id="findByStudio" resultMap="PhotographerResultMap" useCache="true">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM photographer
+        WHERE studio = #{studio}
+        ORDER BY photographer_id ASC
+    </select>
+
+    <!-- useCache="false"：结果不进二级缓存，每次都真查数据库 -->
+    <select id="findAll" resultMap="PhotographerResultMap" useCache="false">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM photographer
+        ORDER BY photographer_id ASC
+    </select>
+
+    <!-- useCache="false" + flushCache="true"：既不写缓存，执行前还先清空本 namespace 的二级缓存 -->
+    <select id="findAllFresh" resultMap="PhotographerResultMap" useCache="false" flushCache="true">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM photographer
+        ORDER BY photographer_id ASC
+    </select>
+
+    <!-- insert / update / delete 的 flushCache 默认就是 true，提交时清空两级缓存 -->
+    <update id="renewDayRate" flushCache="true">
+        UPDATE photographer SET day_rate = #{dayRate} WHERE photographer_id = #{photographerId}
+    </update>
+
+</mapper>

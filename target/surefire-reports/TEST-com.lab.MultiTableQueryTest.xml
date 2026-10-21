@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.lab.MultiTableQueryTest" time="0.702" tests="5" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.class.path" value="D:\Java实验\mybatis-demo\target\test-classes;D:\Java实验\mybatis-demo\target\classes;C:\Users\34818\.m2\repository\org\mybatis\mybatis\3.5.13\mybatis-3.5.13.jar;C:\Users\34818\.m2\repository\com\baomidou\mybatis-plus\3.5.5\mybatis-plus-3.5.5.jar;C:\Users\34818\.m2\repository\com\baomidou\mybatis-plus-core\3.5.5\mybatis-plus-core-3.5.5.jar;C:\Users\34818\.m2\repository\com\baomidou\mybatis-plus-annotation\3.5.5\mybatis-plus-annotation-3.5.5.jar;C:\Users\34818\.m2\repository\com\baomidou\mybatis-plus-extension\3.5.5\mybatis-plus-extension-3.5.5.jar;C:\Users\34818\.m2\repository\com\github\jsqlparser\jsqlparser\4.6\jsqlparser-4.6.jar;C:\Users\34818\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\34818\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\34818\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\34818\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\34818\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\34818\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\34818\.m2\repository\ch\qos\logback\logback-classic\1.2.13\logback-classic-1.2.13.jar;C:\Users\34818\.m2\repository\ch\qos\logback\logback-core\1.2.13\logback-core-1.2.13.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.boot.library.path" value="D:\Java\jdk-25\bin"/>
+    <property name="sun.java.command" value="C:\Users\34818\AppData\Local\Temp\surefire1534795877282969114\surefirebooter-20261021163728476_3.jar C:\Users\34818\AppData\Local\Temp\surefire1534795877282969114 2026-10-21T16-37-28_391-jvmRun1 surefire-20261021163728476_1tmp surefire_0-20261021163728476_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\Java实验\mybatis-demo\target\test-classes;D:\Java实验\mybatis-demo\target\classes;C:\Users\34818\.m2\repository\org\mybatis\mybatis\3.5.13\mybatis-3.5.13.jar;C:\Users\34818\.m2\repository\com\baomidou\mybatis-plus\3.5.5\mybatis-plus-3.5.5.jar;C:\Users\34818\.m2\repository\com\baomidou\mybatis-plus-core\3.5.5\mybatis-plus-core-3.5.5.jar;C:\Users\34818\.m2\repository\com\baomidou\mybatis-plus-annotation\3.5.5\mybatis-plus-annotation-3.5.5.jar;C:\Users\34818\.m2\repository\com\baomidou\mybatis-plus-extension\3.5.5\mybatis-plus-extension-3.5.5.jar;C:\Users\34818\.m2\repository\com\github\jsqlparser\jsqlparser\4.6\jsqlparser-4.6.jar;C:\Users\34818\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\34818\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\34818\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\34818\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\34818\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\34818\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\34818\.m2\repository\ch\qos\logback\logback-classic\1.2.13\logback-classic-1.2.13.jar;C:\Users\34818\.m2\repository\ch\qos\logback\logback-core\1.2.13\logback-core-1.2.13.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\34818"/>
+    <property name="user.language" value="zh"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-09-16"/>
+    <property name="java.home" value="D:\Java\jdk-25"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\Java实验\mybatis-demo"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\34818\AppData\Local\Temp\surefire1534795877282969114\surefirebooter-20261021163728476_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25+37-LTS-3491"/>
+    <property name="user.name" value="34818"/>
+    <property name="stdout.encoding" value="GBK"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\34818\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\34818\AppData\Local\Temp\"/>
+    <property name="java.version" value="25"/>
+    <property name="user.dir" value="D:\Java实验\mybatis-demo"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\Java\jdk-25\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\apache-maven-3.9.16\bin;D:\Java\jdk-25\bin;D:\CodeBuddy CN\resources\app\extensions\genie\out\vendor\shim\safe-bin;C:\Python314\Scripts\;C:\Python314\;D:\麒麟VMware\bin\;C;\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;D:\JavaWeb\apache-tomcat-9.0.115\bin;D:\统一建模rose\common;;D:\Git\cmd;D:\node\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\WSL\;C:\Users\34818\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\34818\AppData\Local\Programs\Python\Python313\;C:\Users\34818\AppData\Local\Microsoft\WindowsApps;D:\PyCharm\PyCharm 2025.2.3\bin;D:\JavaWeb\IDEAL\IntelliJ IDEA 2025.3.3\bin;D:\CodeBuddy CN\bin;C:\Users\34818\AppData\Local\GitHubDesktop\bin;C:\Users\34818\AppData\Local\Programs\Microsoft VS Code\bin;D:\apache-maven-3.9.16\bin;C:\Users\34818\AppData\Roaming\npm;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="GBK"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25+37-LTS-3491"/>
+    <property name="stdin.encoding" value="GBK"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="testFindWorkDetails" classname="com.lab.MultiTableQueryTest" time="0.594">
+    <system-out><![CDATA[2026-10-21 16:37:29 [DEBUG] com.baomidou.mybatisplus.core.toolkit.Sequence - Initialization Sequence datacenterId:0 workerId:0
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetails - ==>  Preparing: SELECT w.work_id, w.work_title, w.location, w.shoot_date, w.style, w.price, w.status AS work_status, p.photographer_id AS id, p.photographer_name AS name, p.studio, p.specialty FROM photo_work w INNER JOIN photographer p ON w.photographer_id = p.photographer_id ORDER BY w.price DESC, w.work_id ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetails - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetails - <==      Total: 23
+WorkDetailVO{workId=12, workTitle='冰岛极光', style='旅拍', price=6800.00, photographer='李四', studio='风光影像组', location='冰岛 雷克雅未克'}
+WorkDetailVO{workId=11, workTitle='京都秋日', style='旅拍', price=5200.00, photographer='李四', studio='风光影像组', location='日本 京都'}
+WorkDetailVO{workId=8, workTitle='冬季新品大片', style='商业', price=4500.00, photographer='赵敏', studio='商业广告组', location='北京 798'}
+WorkDetailVO{workId=6, workTitle='海岛婚礼', style='婚礼', price=3800.00, photographer='王强', studio='风光影像组', location='三亚 蜈支洲岛'}
+WorkDetailVO{workId=19, workTitle='银河拱桥', style='星空', price=3600.00, photographer='吴俊杰', studio='旅拍小队', location='青海 茶卡'}
+WorkDetailVO{workId=7, workTitle='教堂誓言', style='婚礼', price=3200.00, photographer='王强', studio='风光影像组', location='北京 王府井教堂'}
+WorkDetailVO{workId=9, workTitle='云端之城', style='航拍', price=3000.00, photographer='张三', studio='人像工作室', location='深圳 福田'}
+WorkDetailVO{workId=10, workTitle='梯田之镜', style='航拍', price=2800.00, photographer='张三', studio='人像工作室', location='云南 元阳'}
+WorkDetailVO{workId=4, workTitle='雪山黎明', style='风光', price=2600.00, photographer='李娜', studio='人像工作室', location='四川 贡嘎'}
+WorkDetailVO{workId=20, workTitle='几何立面', style='建筑', price=2600.00, photographer='郑晓彤', studio='人像工作室', location='上海 陆家嘴'}
+WorkDetailVO{workId=16, workTitle='雾锁群山', style='风光', price=2400.00, photographer='孙浩', studio='人像工作室', location='湖南 张家界'}
+WorkDetailVO{workId=5, workTitle='海边银河', style='风光', price=2200.00, photographer='李娜', studio='人像工作室', location='福建 平潭'}
+WorkDetailVO{workId=21, workTitle='老厂房改造', style='建筑', price=2100.00, photographer='郑晓彤', studio='人像工作室', location='上海 杨浦'}
+WorkDetailVO{workId=2, workTitle='城市夜行者', style='人像', price=1500.00, photographer='张伟', studio='人像工作室', location='上海 外滩'}
+WorkDetailVO{workId=1, workTitle='晨光里的她', style='人像', price=1200.00, photographer='张伟', studio='人像工作室', location='上海 武康路'}
+WorkDetailVO{workId=14, workTitle='老街理发店', style='纪实', price=1100.00, photographer='权小乐', studio='商业广告组', location='成都 宽窄巷子'}
+WorkDetailVO{workId=15, workTitle='早市烟火', style='纪实', price=1000.00, photographer='权小乐', studio='商业广告组', location='成都 玉林'}
+WorkDetailVO{workId=3, workTitle='胶片肖像集', style='人像', price=980.00, photographer='张伟', studio='人像工作室', location='上海 田子坊'}
+WorkDetailVO{workId=13, workTitle='复古调色样片', style='后期', price=900.00, photographer='刘岩', studio='婚礼纪实组', location='广州 沙面'}
+WorkDetailVO{workId=17, workTitle='第一次奔跑', style='儿童', price=880.00, photographer='周雨欣', studio='旅拍小队', location='杭州 西湖'}
+WorkDetailVO{workId=18, workTitle='生日气球', style='儿童', price=760.00, photographer='周雨欣', studio='旅拍小队', location='杭州 滨江'}
+WorkDetailVO{workId=22, workTitle='深夜食堂', style='美食', price=700.00, photographer='冯磊', studio='风光影像组', location='武汉 吉庆街'}
+WorkDetailVO{workId=23, workTitle='猫的午后', style='宠物', price=600.00, photographer='何静怡', studio='婚礼纪实组', location='武汉 光谷'}
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photo_work
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - <==      Total: 1
+]]></system-out>
+  </testcase>
+  <testcase name="testFindWithWorks" classname="com.lab.MultiTableQueryTest" time="0.034">
+    <system-out><![CDATA[2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.findWithWorks - ==>  Preparing: SELECT p.photographer_id, p.photographer_name, p.gender, p.studio, p.specialty, p.day_rate, p.join_date, p.status, w.work_id, w.photographer_id AS work_photographer_id, w.work_title, w.location, w.shoot_date, w.style, w.price, w.status AS work_status FROM photographer p LEFT JOIN photo_work w ON w.photographer_id = p.photographer_id ORDER BY p.photographer_id ASC, w.price DESC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.findWithWorks - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.findWithWorks - <==      Total: 23
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photographer
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.selectCount - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.selectCount - <==      Total: 1
+张伟 的作品：
+   PhotoWork{workId=2, photographerId=1, workTitle='城市夜行者', location='上海 外滩', shootDate=2024-09-05, style='人像', price=1500.00, status=1}
+   PhotoWork{workId=1, photographerId=1, workTitle='晨光里的她', location='上海 武康路', shootDate=2024-07-20, style='人像', price=1200.00, status=1}
+   PhotoWork{workId=3, photographerId=1, workTitle='胶片肖像集', location='上海 田子坊', shootDate=2025-01-18, style='人像', price=980.00, status=1}
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photo_work WHERE (photographer_id = ?)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==> Parameters: 1(Integer)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - <==      Total: 1
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photo_work
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - <==      Total: 1
+]]></system-out>
+  </testcase>
+  <testcase name="testFindWorksByStudio" classname="com.lab.MultiTableQueryTest" time="0.018">
+    <system-out><![CDATA[2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorksByStudio - ==>  Preparing: SELECT w.work_id, w.work_title, w.location, w.shoot_date, w.style, w.price, w.status AS work_status, p.photographer_id AS id, p.photographer_name AS name, p.studio, p.specialty FROM photo_work w INNER JOIN photographer p ON w.photographer_id = p.photographer_id WHERE p.studio = ? ORDER BY w.price DESC, w.work_id ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorksByStudio - ==> Parameters: 旅拍小队(String)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorksByStudio - <==      Total: 3
+WorkDetailVO{workId=19, workTitle='银河拱桥', style='星空', price=3600.00, photographer='吴俊杰', studio='旅拍小队', location='青海 茶卡'}
+WorkDetailVO{workId=17, workTitle='第一次奔跑', style='儿童', price=880.00, photographer='周雨欣', studio='旅拍小队', location='杭州 西湖'}
+WorkDetailVO{workId=18, workTitle='生日气球', style='儿童', price=760.00, photographer='周雨欣', studio='旅拍小队', location='杭州 滨江'}
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.queryByExample - ==>  Preparing: SELECT photographer_id, photographer_name, gender, studio, specialty, day_rate, join_date, status FROM photographer WHERE studio = ? ORDER BY photographer_id ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.queryByExample - ==> Parameters: 旅拍小队(String)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotographerMapper.queryByExample - <==      Total: 2
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photo_work WHERE (photographer_id = ?)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==> Parameters: 10(Integer)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - <==      Total: 1
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photo_work WHERE (photographer_id = ?)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==> Parameters: 11(Integer)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - <==      Total: 1
+]]></system-out>
+  </testcase>
+  <testcase name="testFindWorkDetailsByCondition" classname="com.lab.MultiTableQueryTest" time="0.017">
+    <system-out><![CDATA[2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photo_work
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - <==      Total: 1
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==>  Preparing: SELECT w.work_id, w.work_title, w.location, w.shoot_date, w.style, w.price, w.status AS work_status, p.photographer_id AS id, p.photographer_name AS name, p.studio, p.specialty FROM photo_work w INNER JOIN photographer p ON w.photographer_id = p.photographer_id ORDER BY w.price DESC, w.work_id ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - <==      Total: 23
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==>  Preparing: SELECT w.work_id, w.work_title, w.location, w.shoot_date, w.style, w.price, w.status AS work_status, p.photographer_id AS id, p.photographer_name AS name, p.studio, p.specialty FROM photo_work w INNER JOIN photographer p ON w.photographer_id = p.photographer_id WHERE w.style = ? ORDER BY w.price DESC, w.work_id ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==> Parameters: 风光(String)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - <==      Total: 3
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photo_work WHERE (style = ?)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==> Parameters: 风光(String)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - <==      Total: 1
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==>  Preparing: SELECT w.work_id, w.work_title, w.location, w.shoot_date, w.style, w.price, w.status AS work_status, p.photographer_id AS id, p.photographer_name AS name, p.studio, p.specialty FROM photo_work w INNER JOIN photographer p ON w.photographer_id = p.photographer_id WHERE p.photographer_name LIKE CONCAT('%', ?, '%') AND w.price >= ? AND w.price <= ? ORDER BY w.price DESC, w.work_id ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==> Parameters: 张(String), 1000(BigDecimal), 2000(BigDecimal)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - <==      Total: 2
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==>  Preparing: SELECT w.work_id, w.work_title, w.location, w.shoot_date, w.style, w.price, w.status AS work_status, p.photographer_id AS id, p.photographer_name AS name, p.studio, p.specialty FROM photo_work w INNER JOIN photographer p ON w.photographer_id = p.photographer_id WHERE p.studio = ? ORDER BY w.price DESC, w.work_id ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==> Parameters: 人像工作室(String)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - <==      Total: 10
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==>  Preparing: SELECT w.work_id, w.work_title, w.location, w.shoot_date, w.style, w.price, w.status AS work_status, p.photographer_id AS id, p.photographer_name AS name, p.studio, p.specialty FROM photo_work w INNER JOIN photographer p ON w.photographer_id = p.photographer_id WHERE w.location LIKE CONCAT('%', ?, '%') ORDER BY w.price DESC, w.work_id ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - ==> Parameters: 上海(String)
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.findWorkDetailsByCondition - <==      Total: 5
+]]></system-out>
+  </testcase>
+  <testcase name="testStatByStudio" classname="com.lab.MultiTableQueryTest" time="0.005">
+    <system-out><![CDATA[2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.statByStudio - ==>  Preparing: SELECT p.studio AS studio, COUNT(w.work_id) AS work_count, ROUND(AVG(w.price), 2) AS avg_price, MAX(w.price) AS max_price, MIN(w.price) AS min_price FROM photographer p INNER JOIN photo_work w ON w.photographer_id = p.photographer_id GROUP BY p.studio ORDER BY work_count DESC, p.studio ASC
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.statByStudio - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.statByStudio - <==      Total: 5
+StudioStatVO{studio='人像工作室', workCount=10, avgPrice=2138.00, maxPrice=3000.00, minPrice=980.00}
+StudioStatVO{studio='风光影像组', workCount=5, avgPrice=3940.00, maxPrice=6800.00, minPrice=700.00}
+StudioStatVO{studio='商业广告组', workCount=3, avgPrice=2200.00, maxPrice=4500.00, minPrice=1000.00}
+StudioStatVO{studio='旅拍小队', workCount=3, avgPrice=1746.67, maxPrice=3600.00, minPrice=760.00}
+StudioStatVO{studio='婚礼纪实组', workCount=2, avgPrice=750.00, maxPrice=900.00, minPrice=600.00}
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==>  Preparing: SELECT COUNT( * ) AS total FROM photo_work
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - ==> Parameters: 
+2026-10-21 16:37:29 [DEBUG] com.lab.mapper.PhotoWorkMapper.selectCount - <==      Total: 1
+]]></system-out>
+  </testcase>
+</testsuite>

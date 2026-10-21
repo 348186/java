@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="jdbc.properties"/>
+
+    <settings>
+        <!-- 日志走 SLF4J（底层为 Logback），SQL 计数工具正是靠它统计 -->
+        <setting name="logImpl" value="SLF4J"/>
+        <!-- 开启二级缓存的总开关（默认就是 true，显式写出方便对照） -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 一级缓存作用域：SESSION = 整个 SqlSession 内有效（默认值） -->
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.lab.entity"/>
+    </typeAliases>
+
+    <environments default="cacheLab">
+        <environment id="cacheLab">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="com/lab/cache/PhotographerCacheMapper.xml"/>
+    </mappers>
+
+</configuration>

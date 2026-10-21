@@ -1,4 +1,5 @@
-com\example\MybatisTest.class
-com\example\UseMapperTest.class
-com\example\UserMapperAnnotationTest.class
-com\example\EmpMapperTest.class
+com\lab\MultiTableQueryTest.class
+com\lab\PhotographerMybatisPlusTest.class
+com\lab\TimedLruCacheTest.class
+com\lab\PhotographerCacheTest.class
+com\lab\PhotographerMapperXmlTest.class

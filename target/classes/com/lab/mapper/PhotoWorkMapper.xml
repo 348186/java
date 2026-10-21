@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lab.mapper.PhotoWorkMapper">
+
+    <!-- ============ 结果映射 ============ -->
+
+    <!-- 作品单表映射 -->
+    <resultMap id="WorkBaseResultMap" type="PhotoWork">
+        <id property="workId" column="work_id"/>
+        <result property="photographerId" column="photographer_id"/>
+        <result property="workTitle" column="work_title"/>
+        <result property="location" column="location"/>
+        <result property="shootDate" column="shoot_date"/>
+        <result property="style" column="style"/>
+        <result property="price" column="price"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 联表映射：作品字段 + 摄影师字段 -->
+    <resultMap id="WorkDetailResultMap" type="WorkDetailVO">
+        <id property="workId" column="work_id"/>
+        <result property="workTitle" column="work_title"/>
+        <result property="location" column="location"/>
+        <result property="shootDate" column="shoot_date"/>
+        <result property="style" column="style"/>
+        <result property="price" column="price"/>
+        <!-- w.status 起了别名，避免与 p.status 撞列名 -->
+        <result property="workStatus" column="work_status"/>
+        <result property="photographerId" column="id"/>
+        <result property="photographerName" column="name"/>
+        <result property="studio" column="studio"/>
+        <result property="specialty" column="specialty"/>
+    </resultMap>
+
+    <!-- 聚合映射：GROUP BY studio -->
+    <resultMap id="StudioStatResultMap" type="StudioStatVO">
+        <result property="studio" column="studio"/>
+        <result property="workCount" column="work_count"/>
+        <result property="avgPrice" column="avg_price"/>
+        <result property="maxPrice" column="max_price"/>
+        <result property="minPrice" column="min_price"/>
+    </resultMap>
+
+    <!-- 联表公共列：注意两张表都有 status，必须起别名区分 -->
+    <sql id="JoinColumns">
+        w.work_id,
+        w.work_title,
+        w.location,
+        w.shoot_date,
+        w.style,
+        w.price,
+        w.status          AS work_status,
+        p.photographer_id AS id,
+        p.photographer_name AS name,
+        p.studio,
+        p.specialty
+    </sql>
+
+    <!-- ============ 查询 ============ -->
+
+    <!-- 1. 单表：按摄影师查作品 -->
+    <select id="findByPhotographerId" resultMap="WorkBaseResultMap">
+        SELECT work_id, photographer_id, work_title, location, shoot_date, style, price, status
+        FROM photo_work
+        WHERE photographer_id = #{photographerId}
+        ORDER BY price DESC
+    </select>
+
+    <!-- 2. 普通联表：作品 + 摄影师 -->
+    <select id="findWorkDetails" resultMap="WorkDetailResultMap">
+        SELECT
+        <include refid="JoinColumns"/>
+        FROM photo_work w
+        INNER JOIN photographer p ON w.photographer_id = p.photographer_id
+        ORDER BY w.price DESC, w.work_id ASC
+    </select>
+
+    <!-- 3. 联表 + 动态条件（&lt;where&gt; + &lt;if&gt;，条件全空即查全部） -->
+    <select id="findWorkDetailsByCondition" parameterType="WorkQueryDTO" resultMap="WorkDetailResultMap">
+        SELECT
+        <include refid="JoinColumns"/>
+        FROM photo_work w
+        INNER JOIN photographer p ON w.photographer_id = p.photographer_id
+        <where>
+            <if test="style != null and style != ''">
+                AND w.style = #{style}
+            </if>
+            <if test="locationKeyword != null and locationKeyword.trim() != ''">
+                AND w.location LIKE CONCAT('%', #{locationKeyword}, '%')
+            </if>
+            <if test="photographerName != null and photographerName.trim() != ''">
+                AND p.photographer_name LIKE CONCAT('%', #{photographerName}, '%')
+            </if>
+            <if test="studio != null and studio != ''">
+                AND p.studio = #{studio}
+            </if>
+            <if test="minPrice != null">
+                AND w.price &gt;= #{minPrice}
+            </if>
+            <if test="maxPrice != null">
+                AND w.price &lt;= #{maxPrice}
+            </if>
+            <if test="workStatus != null">
+                AND w.status = #{workStatus}
+            </if>
+        </where>
+        ORDER BY w.price DESC, w.work_id ASC
+    </select>
+
+    <!-- 4. 以主表维度反查：某工作室的全部作品 -->
+    <select id="findWorksByStudio" resultMap="WorkDetailResultMap">
+        SELECT
+        <include refid="JoinColumns"/>
+        FROM photo_work w
+        INNER JOIN photographer p ON w.photographer_id = p.photographer_id
+        WHERE p.studio = #{studio}
+        ORDER BY w.price DESC, w.work_id ASC
+    </select>
+
+    <!-- 5. 分组聚合：每个工作室的作品数 / 均价 / 最高价 / 最低价 -->
+    <select id="statByStudio" resultMap="StudioStatResultMap">
+        SELECT p.studio              AS studio,
+               COUNT(w.work_id)      AS work_count,
+               ROUND(AVG(w.price), 2) AS avg_price,
+               MAX(w.price)          AS max_price,
+               MIN(w.price)          AS min_price
+        FROM photographer p
+                 INNER JOIN photo_work w ON w.photographer_id = p.photographer_id
+        GROUP BY p.studio
+        ORDER BY work_count DESC, p.studio ASC
+    </select>
+
+</mapper>

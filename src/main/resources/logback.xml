@@ -9,9 +9,9 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/emp-mis.log</file>
+        <file>logs/photo-studio.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>logs/emp-mis.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>logs/photo-studio.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxFileSize>10MB</maxFileSize>
             <maxHistory>15</maxHistory>
         </rollingPolicy>
@@ -23,9 +23,9 @@
 
     <!-- Mapper 所在包输出 DEBUG，可看到 SQL、参数占位与结果集行数 -->
     <logger name="com.lab.mapper" level="DEBUG"/>
+    <!-- 实验三缓存包：需要 DEBUG 才能看到 Preparing / Cache Hit Ratio -->
+    <logger name="com.lab.cache" level="DEBUG"/>
     <logger name="com.baomidou.mybatisplus" level="DEBUG"/>
-    <logger name="org.springframework" level="WARN"/>
-    <logger name="com.alibaba.druid" level="WARN"/>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>

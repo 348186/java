@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lab.mapper.PhotographerMapper">
+
+    <!-- 自定义结果映射：解决列名与属性名不一致（photographer_name -> photographerName、join_date -> joinDate） -->
+    <resultMap id="BaseResultMap" type="Photographer">
+        <id property="photographerId" column="photographer_id"/>
+        <result property="photographerName" column="photographer_name"/>
+        <result property="gender" column="gender"/>
+        <result property="studio" column="studio"/>
+        <result property="specialty" column="specialty"/>
+        <result property="dayRate" column="day_rate"/>
+        <result property="joinDate" column="join_date"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <!-- 一对多：摄影师 + 其作品列表（&lt;collection&gt; 嵌套结果） -->
+    <resultMap id="WithWorksResultMap" type="Photographer" extends="BaseResultMap">
+        <collection property="works" ofType="PhotoWork">
+            <id property="workId" column="work_id"/>
+            <result property="photographerId" column="work_photographer_id"/>
+            <result property="workTitle" column="work_title"/>
+            <result property="location" column="location"/>
+            <result property="shootDate" column="shoot_date"/>
+            <result property="style" column="style"/>
+            <result property="price" column="price"/>
+            <result property="status" column="work_status"/>
+        </collection>
+    </resultMap>
+
+    <!-- 全字段片段，避免 SELECT * -->
+    <sql id="BaseColumns">
+        photographer_id, photographer_name, gender, studio, specialty, day_rate, join_date, status
+    </sql>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM photographer
+        ORDER BY photographer_id ASC
+    </select>
+
+    <select id="findByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM photographer
+        WHERE photographer_id = #{photographerId}
+    </select>
+
+    <!-- 任务 3.1：多条件组合查询，&lt;where&gt; 自动剔除开头多余的 AND/OR -->
+    <select id="queryByExample" parameterType="Photographer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM photographer
+        <where>
+            <if test="photographerName != null and photographerName.trim() != ''">
+                AND photographer_name LIKE CONCAT('%', #{photographerName}, '%')
+            </if>
+            <if test="gender != null and gender != ''">
+                AND gender = #{gender}
+            </if>
+            <if test="studio != null and studio != ''">
+                AND studio = #{studio}
+            </if>
+            <if test="specialty != null and specialty != ''">
+                AND specialty = #{specialty}
+            </if>
+            <if test="dayRate != null">
+                AND day_rate &gt;= #{dayRate}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY photographer_id ASC
+    </select>
+
+    <!-- 任务 3.4：分支选择，命中即返回，不再叠加后续条件 -->
+    <select id="queryByPriority" parameterType="Photographer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="BaseColumns"/>
+        FROM photographer
+        <choose>
+            <when test="photographerName != null and photographerName.trim() != ''">
+                WHERE photographer_name = #{photographerName}
+            </when>
+            <when test="studio != null and studio != ''">
+                WHERE studio = #{studio}
+            </when>
+            <otherwise>
+                WHERE status = 1
+            </otherwise>
+        </choose>
+        ORDER BY photographer_id ASC
+    </select>
+
+    <!-- 新增并回填自增主键 -->
+    <insert id="addPhotographer" parameterType="Photographer" useGeneratedKeys="true" keyProperty="photographerId">
+        INSERT INTO photographer (photographer_name, gender, studio, specialty, day_rate, join_date, status)
+        VALUES (#{photographerName}, #{gender}, #{studio}, #{specialty}, #{dayRate}, #{joinDate}, #{status})
+    </insert>
+
+    <!-- 任务 3.3：批量新增 -->
+    <insert id="addInBatch">
+        INSERT INTO photographer (photographer_name, gender, studio, specialty, day_rate, join_date, status)
+        VALUES
+        <foreach collection="photographerList" item="item" separator=",">
+            (#{item.photographerName}, #{item.gender}, #{item.studio}, #{item.specialty},
+            #{item.dayRate}, #{item.joinDate}, #{item.status})
+        </foreach>
+    </insert>
+
+    <update id="modifyPhotographer" parameterType="Photographer">
+        UPDATE photographer
+        SET photographer_name = #{photographerName},
+            gender = #{gender},
+            studio = #{studio},
+            specialty = #{specialty},
+            day_rate = #{dayRate},
+            join_date = #{joinDate},
+            status = #{status}
+        WHERE photographer_id = #{photographerId}
+    </update>
+
+    <!-- 任务 3.2：动态更新，&lt;set&gt; 自动剔除结尾多余逗号 -->
+    <update id="modifySelective" parameterType="Photographer">
+        UPDATE photographer
+        <set>
+            <if test="photographerName != null and photographerName.trim() != ''">photographer_name = #{photographerName},</if>
+            <if test="gender != null and gender != ''">gender = #{gender},</if>
+            <if test="studio != null and studio != ''">studio = #{studio},</if>
+            <if test="specialty != null and specialty != ''">specialty = #{specialty},</if>
+            <if test="dayRate != null">day_rate = #{dayRate},</if>
+            <if test="joinDate != null">join_date = #{joinDate},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE photographer_id = #{photographerId}
+    </update>
+
+    <delete id="removePhotographer" parameterType="int">
+        DELETE FROM photographer WHERE photographer_id = #{photographerId}
+    </delete>
+
+    <!-- 任务 3.3：批量删除 -->
+    <delete id="removeInBatch">
+        DELETE FROM photographer WHERE photographer_id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--
+      一对多多表查询：LEFT JOIN 保证「还没有作品的摄影师」也出现在结果里（works 为空集合）。
+      两张表都有 status / photographer_id，因此从表列统一加别名，避免覆盖主表列。
+    -->
+    <select id="findWithWorks" resultMap="WithWorksResultMap">
+        SELECT p.photographer_id,
+               p.photographer_name,
+               p.gender,
+               p.studio,
+               p.specialty,
+               p.day_rate,
+               p.join_date,
+               p.status,
+               w.work_id,
+               w.photographer_id AS work_photographer_id,
+               w.work_title,
+               w.location,
+               w.shoot_date,
+               w.style,
+               w.price,
+               w.status           AS work_status
+        FROM photographer p
+                 LEFT JOIN photo_work w ON w.photographer_id = p.photographer_id
+        ORDER BY p.photographer_id ASC, w.price DESC
+    </select>
+
+</mapper>

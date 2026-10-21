@@ -1,4 +1,5 @@
-D:\Java实验\mybatis-demo\src\test\java\com\example\EmpMapperTest.java
-D:\Java实验\mybatis-demo\src\test\java\com\example\MybatisTest.java
-D:\Java实验\mybatis-demo\src\test\java\com\example\UseMapperTest.java
-D:\Java实验\mybatis-demo\src\test\java\com\example\UserMapperAnnotationTest.java
+D:\Java实验\mybatis-demo\src\test\java\com\lab\MultiTableQueryTest.java
+D:\Java实验\mybatis-demo\src\test\java\com\lab\PhotographerCacheTest.java
+D:\Java实验\mybatis-demo\src\test\java\com\lab\PhotographerMapperXmlTest.java
+D:\Java实验\mybatis-demo\src\test\java\com\lab\PhotographerMybatisPlusTest.java
+D:\Java实验\mybatis-demo\src\test\java\com\lab\TimedLruCacheTest.java
