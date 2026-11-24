@@ -1,49 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration PUBLIC
-        "-//mybatis.org//DTD Config 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-    <!-- 连接四要素外置，避免硬编码 -->
-    <properties resource="jdbc.properties"/>
-
     <settings>
-        <!-- 驼峰自动映射：photographer_name -> photographerName -->
+        <!-- 驼峰命名自动映射：work_title -> workTitle -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
-        <!-- 日志实现：LOG4J（配置见 log4j.properties） -->
-        <setting name="logImpl" value="LOG4J"/>
-        <!-- 参数为空时显式指定 jdbcType，避免 MySQL 报 "No typehandler" -->
-        <setting name="jdbcTypeForNull" value="NULL"/>
+        <!-- SQL 日志交给 Log4j2 输出 -->
+        <setting name="logImpl" value="LOG4J2"/>
     </settings>
 
-    <!-- 实体类别名包，映射文件中可直接写 Photographer / PhotoWork -->
     <typeAliases>
         <package name="com.lab.entity"/>
-        <!-- VO / DTO 也注册别名，联表 resultMap 中可直接写 WorkDetailVO -->
-        <package name="com.lab.vo"/>
-        <package name="com.lab.dto"/>
     </typeAliases>
 
-    <!-- 分页插件：自定义构造器完成内部拦截器装配 -->
-    <plugins>
-        <plugin interceptor="com.lab.plugin.MpPaginationPlugin"/>
-    </plugins>
-
-    <environments default="lab">
-        <environment id="lab">
+    <environments default="dev">
+        <environment id="dev">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="${jdbc.driver}"/>
-                <property name="url" value="${jdbc.url}"/>
-                <property name="username" value="${jdbc.username}"/>
-                <property name="password" value="${jdbc.password}"/>
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/photo_studio?useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
             </dataSource>
         </environment>
     </environments>
 
-    <!-- 按包扫描 Mapper 接口，接口与 XML 需同名同包 -->
     <mappers>
-        <package name="com.lab.mapper"/>
+        <mapper resource="com/lab/mapper/PhotoWorkMapper.xml"/>
     </mappers>
-
 </configuration>

@@ -1,39 +1,47 @@
 package com.lab.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lab.dto.WorkQueryDTO;
 import com.lab.entity.PhotoWork;
-import com.lab.vo.StudioStatVO;
-import com.lab.vo.WorkDetailVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
- * 摄影作品持久层接口（多表查询集中在这里）。
- *
- * <p>覆盖四类典型多表查询：
- * <ol>
- *   <li>普通联表：{@link #findWorkDetails()} —— photo_work JOIN photographer，结果封装成 VO</li>
- *   <li>动态条件联表：{@link #findWorkDetailsByCondition(WorkQueryDTO)} —— &lt;where&gt; + &lt;if&gt; 拼装</li>
- *   <li>按从表条件反查主表维度：{@link #findWorksByStudio(String)}</li>
- *   <li>分组聚合：{@link #statByStudio()} —— GROUP BY studio 统计作品数与价格</li>
- * </ol>
+ * 摄影作品 Mapper：手写 XML SQL 版本。
  */
-public interface PhotoWorkMapper extends BaseMapper<PhotoWork> {
+public interface PhotoWorkMapper {
 
-    /** 按摄影师编号查询其作品（单表，供对照） */
-    List<PhotoWork> findByPhotographerId(@Param("photographerId") Integer photographerId);
+    /** 查询全部作品 */
+    List<PhotoWork> selectAll();
 
-    /** 联表查询全部作品详情（作品 + 摄影师） */
-    List<WorkDetailVO> findWorkDetails();
+    /** 按主键查询 */
+    PhotoWork selectById(@Param("workId") Integer workId);
 
-    /** 联表 + 动态条件查询 */
-    List<WorkDetailVO> findWorkDetailsByCondition(WorkQueryDTO query);
+    /** 新增作品，主键回填到 workId */
+    int insert(PhotoWork work);
 
-    /** 按工作室查询作品详情 */
-    List<WorkDetailVO> findWorksByStudio(@Param("studio") String studio);
+    /** 按主键更新全部字段 */
+    int update(PhotoWork work);
 
-    /** 按工作室分组统计：作品数 / 均价 / 最高价 / 最低价 */
-    List<StudioStatVO> statByStudio();
+    /** 按主键删除 */
+    int deleteById(@Param("workId") Integer workId);
+
+    /** 多条件模糊查询（动态 SQL：if + where） */
+    List<PhotoWork> selectByCondition(PhotoWork condition);
+
+    /** 动态更新（set 标签，只更新非空字段） */
+    int updateSelective(PhotoWork work);
+
+    /** 批量删除（foreach） */
+    int deleteByIds(@Param("ids") Integer[] ids);
+
+    /** 批量插入（foreach） */
+    int insertBatch(@Param("works") List<PhotoWork> works);
+
+    /** 分支选择：按题材/摄影师/全部（choose/when/otherwise） */
+    List<PhotoWork> selectByChoice(@Param("shootType") String shootType,
+                                   @Param("photographer") String photographer);
+
+    /** 按题材分组统计数量与平均定价（结果用 Map 接收） */
+    List<Map<String, Object>> groupByShootType();
 }

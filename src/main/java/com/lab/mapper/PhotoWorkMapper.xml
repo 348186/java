@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lab.mapper.PhotoWorkMapper">
+
+    <resultMap id="workMap" type="com.lab.entity.PhotoWork">
+        <id property="workId" column="work_id"/>
+        <result property="workTitle" column="work_title"/>
+        <result property="photographer" column="photographer"/>
+        <result property="shootType" column="shoot_type"/>
+        <result property="studio" column="studio"/>
+        <result property="shootDate" column="shoot_date"/>
+        <result property="retouchHours" column="retouch_hours"/>
+        <result property="price" column="price"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <sql id="allColumns">
+        work_id, work_title, photographer, shoot_type, studio,
+        shoot_date, retouch_hours, price, status
+    </sql>
+
+    <select id="selectAll" resultMap="workMap">
+        SELECT <include refid="allColumns"/> FROM photo_work ORDER BY work_id
+    </select>
+
+    <select id="selectById" resultMap="workMap">
+        SELECT <include refid="allColumns"/> FROM photo_work WHERE work_id = #{workId}
+    </select>
+
+    <insert id="insert" parameterType="com.lab.entity.PhotoWork"
+            useGeneratedKeys="true" keyProperty="workId">
+        INSERT INTO photo_work
+            (work_title, photographer, shoot_type, studio, shoot_date,
+             retouch_hours, price, status)
+        VALUES
+            (#{workTitle}, #{photographer}, #{shootType}, #{studio}, #{shootDate},
+             #{retouchHours}, #{price}, #{status})
+    </insert>
+
+    <update id="update" parameterType="com.lab.entity.PhotoWork">
+        UPDATE photo_work
+        SET work_title = #{workTitle}, photographer = #{photographer},
+            shoot_type = #{shootType}, studio = #{studio},
+            shoot_date = #{shootDate}, retouch_hours = #{retouchHours},
+            price = #{price}, status = #{status}
+        WHERE work_id = #{workId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM photo_work WHERE work_id = #{workId}
+    </delete>
+
+    <!-- 多条件模糊查询：if 动态拼接，where 自动去掉多余 AND -->
+    <select id="selectByCondition" parameterType="com.lab.entity.PhotoWork"
+            resultMap="workMap">
+        SELECT <include refid="allColumns"/> FROM photo_work
+        <where>
+            <if test="workTitle != null and workTitle != ''">
+                work_title LIKE CONCAT('%', #{workTitle}, '%')
+            </if>
+            <if test="photographer != null and photographer != ''">
+                AND photographer LIKE CONCAT('%', #{photographer}, '%')
+            </if>
+            <if test="shootType != null and shootType != ''">
+                AND shoot_type = #{shootType}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        ORDER BY work_id
+    </select>
+
+    <!-- 动态更新：set 自动去掉末尾逗号 -->
+    <update id="updateSelective" parameterType="com.lab.entity.PhotoWork">
+        UPDATE photo_work
+        <set>
+            <if test="workTitle != null and workTitle != ''">work_title = #{workTitle},</if>
+            <if test="photographer != null and photographer != ''">photographer = #{photographer},</if>
+            <if test="shootType != null and shootType != ''">shoot_type = #{shootType},</if>
+            <if test="studio != null and studio != ''">studio = #{studio},</if>
+            <if test="shootDate != null">shoot_date = #{shootDate},</if>
+            <if test="retouchHours != null">retouch_hours = #{retouchHours},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        WHERE work_id = #{workId}
+    </update>
+
+    <!-- 批量删除：foreach 拼接 IN (?,?,...) -->
+    <delete id="deleteByIds">
+        DELETE FROM photo_work WHERE work_id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入：foreach 拼接多组 VALUES -->
+    <insert id="insertBatch" useGeneratedKeys="true" keyProperty="works.workId">
+        INSERT INTO photo_work
+            (work_title, photographer, shoot_type, studio, shoot_date,
+             retouch_hours, price, status)
+        VALUES
+        <foreach collection="works" item="w" separator=",">
+            (#{w.workTitle}, #{w.photographer}, #{w.shootType}, #{w.studio},
+             #{w.shootDate}, #{w.retouchHours}, #{w.price}, #{w.status})
+        </foreach>
+    </insert>
+
+    <!-- 分支选择：优先按题材，其次按摄影师，否则查全部在展作品 -->
+    <select id="selectByChoice" resultMap="workMap">
+        SELECT <include refid="allColumns"/> FROM photo_work
+        <where>
+            <choose>
+                <when test="shootType != null and shootType != ''">
+                    shoot_type = #{shootType}
+                </when>
+                <when test="photographer != null and photographer != ''">
+                    photographer = #{photographer}
+                </when>
+                <otherwise>
+                    status = 1
+                </otherwise>
+            </choose>
+        </where>
+        ORDER BY work_id
+    </select>
+
+    <!-- 分组统计：列名带空格别名，Map 接收 -->
+    <select id="groupByShootType" resultType="java.util.HashMap">
+        SELECT shoot_type AS shootType,
+               COUNT(*)    AS workCount,
+               AVG(price)  AS avgPrice
+        FROM photo_work
+        GROUP BY shoot_type
+        ORDER BY workCount DESC
+    </select>
+</mapper>
