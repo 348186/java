@@ -1,0 +1,10 @@
+com\lab\entity\PhotoWorkPlus.class
+com\example\shiyan\HelloResource.class
+com\lab\mapper\PhotoWorkMapper.class
+com\lab\Main.class
+com\lab\util\MybatisPlusUtil.class
+com\example\shiyan\HelloApplication.class
+com\lab\entity\PhotoWork.class
+com\lab\PlusMain.class
+com\lab\util\MyBatisUtil.class
+com\lab\mapper\PhotoWorkPlusMapper.class
