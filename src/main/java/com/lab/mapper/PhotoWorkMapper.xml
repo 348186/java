@@ -5,45 +5,57 @@
 
     <resultMap id="workMap" type="com.lab.entity.PhotoWork">
         <id property="workId" column="work_id"/>
+        <result property="photographerId" column="photographer_id"/>
         <result property="workTitle" column="work_title"/>
-        <result property="photographer" column="photographer"/>
-        <result property="shootType" column="shoot_type"/>
-        <result property="studio" column="studio"/>
+        <result property="location" column="location"/>
         <result property="shootDate" column="shoot_date"/>
-        <result property="retouchHours" column="retouch_hours"/>
+        <result property="style" column="style"/>
         <result property="price" column="price"/>
         <result property="status" column="status"/>
+        <result property="photographerName" column="photographer_name"/>
     </resultMap>
 
+    <!-- 所有查询都 LEFT JOIN photographer，带出摄影师姓名 -->
     <sql id="allColumns">
-        work_id, work_title, photographer, shoot_type, studio,
-        shoot_date, retouch_hours, price, status
+        w.work_id           AS work_id,
+        w.photographer_id   AS photographer_id,
+        w.work_title        AS work_title,
+        w.location          AS location,
+        w.shoot_date        AS shoot_date,
+        w.style             AS style,
+        w.price             AS price,
+        w.status            AS status,
+        p.photographer_name AS photographer_name
     </sql>
 
     <select id="selectAll" resultMap="workMap">
-        SELECT <include refid="allColumns"/> FROM photo_work ORDER BY work_id
+        SELECT <include refid="allColumns"/>
+        FROM photo_work w
+        LEFT JOIN photographer p ON w.photographer_id = p.photographer_id
+        ORDER BY w.work_id
     </select>
 
     <select id="selectById" resultMap="workMap">
-        SELECT <include refid="allColumns"/> FROM photo_work WHERE work_id = #{workId}
+        SELECT <include refid="allColumns"/>
+        FROM photo_work w
+        LEFT JOIN photographer p ON w.photographer_id = p.photographer_id
+        WHERE w.work_id = #{workId}
     </select>
 
     <insert id="insert" parameterType="com.lab.entity.PhotoWork"
             useGeneratedKeys="true" keyProperty="workId">
         INSERT INTO photo_work
-            (work_title, photographer, shoot_type, studio, shoot_date,
-             retouch_hours, price, status)
+            (photographer_id, work_title, location, shoot_date, style, price, status)
         VALUES
-            (#{workTitle}, #{photographer}, #{shootType}, #{studio}, #{shootDate},
-             #{retouchHours}, #{price}, #{status})
+            (#{photographerId}, #{workTitle}, #{location}, #{shootDate},
+             #{style}, #{price}, #{status})
     </insert>
 
     <update id="update" parameterType="com.lab.entity.PhotoWork">
         UPDATE photo_work
-        SET work_title = #{workTitle}, photographer = #{photographer},
-            shoot_type = #{shootType}, studio = #{studio},
-            shoot_date = #{shootDate}, retouch_hours = #{retouchHours},
-            price = #{price}, status = #{status}
+        SET photographer_id = #{photographerId}, work_title = #{workTitle},
+            location = #{location}, shoot_date = #{shootDate},
+            style = #{style}, price = #{price}, status = #{status}
         WHERE work_id = #{workId}
     </update>
 
@@ -54,34 +66,38 @@
     <!-- 多条件模糊查询：if 动态拼接，where 自动去掉多余 AND -->
     <select id="selectByCondition" parameterType="com.lab.entity.PhotoWork"
             resultMap="workMap">
-        SELECT <include refid="allColumns"/> FROM photo_work
+        SELECT <include refid="allColumns"/>
+        FROM photo_work w
+        LEFT JOIN photographer p ON w.photographer_id = p.photographer_id
         <where>
             <if test="workTitle != null and workTitle != ''">
-                work_title LIKE CONCAT('%', #{workTitle}, '%')
+                w.work_title LIKE CONCAT('%', #{workTitle}, '%')
             </if>
-            <if test="photographer != null and photographer != ''">
-                AND photographer LIKE CONCAT('%', #{photographer}, '%')
+            <if test="photographerId != null">
+                AND w.photographer_id = #{photographerId}
             </if>
-            <if test="shootType != null and shootType != ''">
-                AND shoot_type = #{shootType}
+            <if test="photographerName != null and photographerName != ''">
+                AND p.photographer_name LIKE CONCAT('%', #{photographerName}, '%')
+            </if>
+            <if test="style != null and style != ''">
+                AND w.style = #{style}
             </if>
             <if test="status != null">
-                AND status = #{status}
+                AND w.status = #{status}
             </if>
         </where>
-        ORDER BY work_id
+        ORDER BY w.work_id
     </select>
 
     <!-- 动态更新：set 自动去掉末尾逗号 -->
     <update id="updateSelective" parameterType="com.lab.entity.PhotoWork">
         UPDATE photo_work
         <set>
+            <if test="photographerId != null">photographer_id = #{photographerId},</if>
             <if test="workTitle != null and workTitle != ''">work_title = #{workTitle},</if>
-            <if test="photographer != null and photographer != ''">photographer = #{photographer},</if>
-            <if test="shootType != null and shootType != ''">shoot_type = #{shootType},</if>
-            <if test="studio != null and studio != ''">studio = #{studio},</if>
+            <if test="location != null and location != ''">location = #{location},</if>
             <if test="shootDate != null">shoot_date = #{shootDate},</if>
-            <if test="retouchHours != null">retouch_hours = #{retouchHours},</if>
+            <if test="style != null and style != ''">style = #{style},</if>
             <if test="price != null">price = #{price},</if>
             <if test="status != null">status = #{status},</if>
         </set>
@@ -99,41 +115,42 @@
     <!-- 批量插入：foreach 拼接多组 VALUES -->
     <insert id="insertBatch" useGeneratedKeys="true" keyProperty="works.workId">
         INSERT INTO photo_work
-            (work_title, photographer, shoot_type, studio, shoot_date,
-             retouch_hours, price, status)
+            (photographer_id, work_title, location, shoot_date, style, price, status)
         VALUES
         <foreach collection="works" item="w" separator=",">
-            (#{w.workTitle}, #{w.photographer}, #{w.shootType}, #{w.studio},
-             #{w.shootDate}, #{w.retouchHours}, #{w.price}, #{w.status})
+            (#{w.photographerId}, #{w.workTitle}, #{w.location}, #{w.shootDate},
+             #{w.style}, #{w.price}, #{w.status})
         </foreach>
     </insert>
 
-    <!-- 分支选择：优先按题材，其次按摄影师，否则查全部在展作品 -->
+    <!-- 分支选择：风格优先，其次摄影师编号，否则查在展作品 -->
     <select id="selectByChoice" resultMap="workMap">
-        SELECT <include refid="allColumns"/> FROM photo_work
+        SELECT <include refid="allColumns"/>
+        FROM photo_work w
+        LEFT JOIN photographer p ON w.photographer_id = p.photographer_id
         <where>
             <choose>
-                <when test="shootType != null and shootType != ''">
-                    shoot_type = #{shootType}
+                <when test="style != null and style != ''">
+                    w.style = #{style}
                 </when>
-                <when test="photographer != null and photographer != ''">
-                    photographer = #{photographer}
+                <when test="photographerId != null">
+                    w.photographer_id = #{photographerId}
                 </when>
                 <otherwise>
-                    status = 1
+                    w.status = 1
                 </otherwise>
             </choose>
         </where>
-        ORDER BY work_id
+        ORDER BY w.work_id
     </select>
 
-    <!-- 分组统计：列名带空格别名，Map 接收 -->
-    <select id="groupByShootType" resultType="java.util.HashMap">
-        SELECT shoot_type AS shootType,
+    <!-- 按风格分组统计 -->
+    <select id="groupByStyle" resultType="java.util.HashMap">
+        SELECT style AS style,
                COUNT(*)    AS workCount,
                AVG(price)  AS avgPrice
         FROM photo_work
-        GROUP BY shoot_type
+        GROUP BY style
         ORDER BY workCount DESC
     </select>
 </mapper>

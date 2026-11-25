@@ -2,20 +2,16 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="mybatis-demo:war exploded" />
+      <artifact name="shiyan:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d195f456-5c01-4f9f-baac-e56dc62aea33" name="更改" comment="">
+    <list default="true" id="68ad43d0-58ea-4f8b-bd30-8e141340139b" name="更改" comment="">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/diff-generator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
@@ -23,25 +19,18 @@
       <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/shiyan/HelloApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/shiyan/HelloResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="spring-beans.schema" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/consoles/db/cc91ae54-f8f0-4b73-b7d4-96f82b359ed3/console.sql" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -57,93 +46,54 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="3IqdqehbewK0ELgBxBjQ2DOUode" />
+  <component name="ProjectId" id="3MZ43gO7XcHODLfaofcrGAyGIut" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;JUnit.MybatisTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UseMapperTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.mybatis-demo中的com.lab.util.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.mybatis-demo中的java.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Tomcat 服务器.Tomcat 11.0.22.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;应用程序.CacheAnnotationDemo.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.CacheXmlDemo.executor&quot;: &quot;Run&quot;,
-    &quot;应用程序.LabRunner.executor&quot;: &quot;Run&quot;
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.PlusMain.executor&quot;: &quot;Run&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+      &quot;mysql_aurora&quot;
     ]
   }
 }</component>
   <component name="RunDashboard">
-    <option name="hiddenConfigurations">
-      <map>
-        <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-          <value>
-            <set />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="shownConfigurations">
-      <map>
-        <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-          <value>
-            <set>
-              <option value="Tomcat 11.0.22" />
-            </set>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
           <value>
             <map>
-              <entry key="Tomcat 11.0.22" value="STOPPED" />
+              <entry key="Tomcat 11.0.22" value="FAILED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
-    <option name="excludedNewTypes">
-      <set>
-        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
-      </set>
-    </option>
   </component>
-  <component name="RunManager" selected="应用程序.CacheAnnotationDemo">
-    <configuration name="CacheAnnotationDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lab.cache.CacheAnnotationDemo" />
-      <module name="mybatis-demo" />
+  <component name="RunManager" selected="Tomcat 服务器.Tomcat 11.0.22">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lab.Main" />
+      <module name="shiyan" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lab.cache.*" />
+          <option name="PATTERN" value="com.lab.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,64 +101,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CacheXmlDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lab.cache.CacheXmlDemo" />
-      <module name="mybatis-demo" />
+    <configuration name="PlusMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.lab.PlusMain" />
+      <module name="shiyan" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lab.cache.*" />
+          <option name="PATTERN" value="com.lab.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LabRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.lab.runner.LabRunner" />
-      <module name="mybatis-demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lab.runner.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="mybatis-demo中的com.lab.util" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lab.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.lab.util" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="mybatis-demo中的java" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis-demo" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Tomcat 11.0.22" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 11.0.22" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
-        <artifact name="mybatis-demo:war exploded">
+        <artifact name="shiyan:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/mybatis_demo_war_exploded" />
+            <option name="CONTEXT_PATH" value="/shiyan_war_exploded" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="6d96ab32-7919-4051-8324-20ba0bf20346" />
+        <option name="BASE_DIRECTORY_NAME" value="f5cfaba3-90b6-41a1-be5e-6b1ee41f5684" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -216,7 +131,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="51246" />
+        <option name="DEBUG_PORT" value="64156" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -281,17 +196,14 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="mybatis-demo:war exploded" />
+          <artifact name="shiyan:war exploded" />
         </option>
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.CacheAnnotationDemo" />
-        <item itemvalue="应用程序.CacheXmlDemo" />
-        <item itemvalue="应用程序.LabRunner" />
-        <item itemvalue="JUnit.mybatis-demo中的java" />
-        <item itemvalue="JUnit.mybatis-demo中的com.lab.util" />
+        <item itemvalue="应用程序.Main" />
+        <item itemvalue="应用程序.PlusMain" />
       </list>
     </recent_temporary>
   </component>
@@ -305,62 +217,30 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="d195f456-5c01-4f9f-baac-e56dc62aea33" name="更改" comment="" />
-      <created>1788496227819</created>
+      <changelist id="68ad43d0-58ea-4f8b-bd30-8e141340139b" name="更改" comment="" />
+      <created>1795544559199</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1788496227819</updated>
-      <workItem from="1788496231872" duration="728000" />
-      <workItem from="1788497004970" duration="3052000" />
-      <workItem from="1788506812194" duration="1963000" />
-      <workItem from="1788539045853" duration="2443000" />
-      <workItem from="1788586292693" duration="9794000" />
-      <workItem from="1788683564233" duration="4156000" />
-      <workItem from="1788687896166" duration="1699000" />
-      <workItem from="1788965296932" duration="270000" />
-      <workItem from="1788968909197" duration="407000" />
-      <workItem from="1789002081111" duration="6066000" />
-      <workItem from="1789378847096" duration="2433000" />
-      <workItem from="1789396631999" duration="719000" />
-      <workItem from="1789573422469" duration="1541000" />
-      <workItem from="1789607017193" duration="2432000" />
-      <workItem from="1790669175760" duration="15546000" />
-      <workItem from="1791422232071" duration="3755000" />
-      <workItem from="1791886976258" duration="90000" />
-      <workItem from="1791888496862" duration="27000" />
-      <workItem from="1792249683506" duration="2672000" />
-      <workItem from="1792326168149" duration="3387000" />
-      <workItem from="1792338419914" duration="53000" />
-      <workItem from="1792417010025" duration="7186000" />
-      <workItem from="1792493634843" duration="1034000" />
-      <workItem from="1792513711279" duration="317000" />
-      <workItem from="1792570346496" duration="115000" />
-      <workItem from="1792572082073" duration="7274000" />
-      <workItem from="1792590482335" duration="376000" />
+      <updated>1795544559199</updated>
+      <workItem from="1795544560579" duration="85000" />
+      <workItem from="1795545335089" duration="326000" />
+      <workItem from="1795545766786" duration="65000" />
+      <workItem from="1795546099442" duration="99000" />
+      <workItem from="1795546375982" duration="500000" />
+      <workItem from="1795548404614" duration="19000" />
+      <workItem from="1795611836832" duration="502000" />
+      <workItem from="1795612357317" duration="241000" />
+      <workItem from="1795614423655" duration="1463000" />
+      <workItem from="1795623283904" duration="250000" />
+      <workItem from="1795624003044" duration="133000" />
+      <workItem from="1795624396369" duration="494000" />
+      <workItem from="1795624921654" duration="159000" />
+      <workItem from="1795625485900" duration="75000" />
+      <workItem from="1795631262316" duration="313000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/mybatis_demo$MybatisTest.ic" NAME="MybatisTest 覆盖结果" MODIFIED="1788688846171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.example.*</FILTER>
-    </SUITE>
   </component>
 </project>

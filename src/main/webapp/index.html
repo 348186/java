@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>摄影作品台账 - 登录</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="login-card">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="3" y="9" width="26" height="18" rx="3"/>
+        <path d="M11 9l2-4h6l2 4"/>
+        <circle cx="16" cy="18" r="5"/>
+        <circle cx="24.5" cy="13" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      <span class="brand-name">光影</span>
+      <span class="brand-en">Photo Ledger</span>
+    </div>
+
+    <h1>摄影作品台账</h1>
+    <p class="subtitle">登录后管理摄影师、作品与拍摄风格</p>
+
+    <form id="login-form" novalidate>
+      <div class="field">
+        <label for="account">账号</label>
+        <div class="input-wrap">
+          <input id="account" name="account" type="text" value="admin" autocomplete="username" placeholder="请输入账号">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="password">口令</label>
+        <div class="input-wrap">
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="请输入口令">
+          <button class="toggle-password" id="toggle-password" type="button" aria-label="显示口令">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <p class="hint" id="hint" role="alert"></p>
+
+      <button class="submit-btn" type="submit">登 录</button>
+    </form>
+
+    <div class="demo-row">
+      <span>演示账号 <strong>admin / 123456</strong></span>
+      <button class="fill-btn" id="fill-demo" type="button">一键填入</button>
+    </div>
+
+    <div class="divider"></div>
+    <div class="footer">SSM 整合实验 · MyBatis 3.5 / MyBatis-Plus 3.5 / MySQL 8</div>
+  </main>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

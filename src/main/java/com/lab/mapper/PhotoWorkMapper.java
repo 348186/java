@@ -8,13 +8,14 @@ import java.util.Map;
 
 /**
  * 摄影作品 Mapper：手写 XML SQL 版本。
+ * photo_work 通过 photographer_id 关联 photographer 表。
  */
 public interface PhotoWorkMapper {
 
-    /** 查询全部作品 */
+    /** 查询全部作品（联表带出摄影师姓名） */
     List<PhotoWork> selectAll();
 
-    /** 按主键查询 */
+    /** 按主键查询（联表带出摄影师姓名） */
     PhotoWork selectById(@Param("workId") Integer workId);
 
     /** 新增作品，主键回填到 workId */
@@ -38,10 +39,10 @@ public interface PhotoWorkMapper {
     /** 批量插入（foreach） */
     int insertBatch(@Param("works") List<PhotoWork> works);
 
-    /** 分支选择：按题材/摄影师/全部（choose/when/otherwise） */
-    List<PhotoWork> selectByChoice(@Param("shootType") String shootType,
-                                   @Param("photographer") String photographer);
+    /** 分支选择：按风格/摄影师编号/在展作品（choose/when/otherwise） */
+    List<PhotoWork> selectByChoice(@Param("style") String style,
+                                   @Param("photographerId") Integer photographerId);
 
-    /** 按题材分组统计数量与平均定价（结果用 Map 接收） */
-    List<Map<String, Object>> groupByShootType();
+    /** 按风格分组统计数量与平均定价（结果用 Map 接收） */
+    List<Map<String, Object>> groupByStyle();
 }

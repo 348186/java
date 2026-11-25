@@ -38,8 +38,8 @@ public class PhotoWorkPlusTest {
 
     @Test
     public void testBaseMapperCrud() {
-        PhotoWorkPlus work = new PhotoWorkPlus("MP测试作品", "程野", "街拍", "测试外景",
-                new java.util.Date(), new BigDecimal("1.0"), new BigDecimal("300.00"), 1);
+        PhotoWorkPlus work = new PhotoWorkPlus(1, "MP测试作品", "上海 测试路",
+                new java.util.Date(), "风光", new BigDecimal("300.00"), 1);
         try {
             assertEquals(1, mapper.insert(work));
             session.commit();
@@ -61,19 +61,19 @@ public class PhotoWorkPlusTest {
     @Test
     public void testQueryWrapper() {
         QueryWrapper<PhotoWorkPlus> qw = new QueryWrapper<>();
-        qw.like("work_title", "光").or().eq("shoot_type", "人像");
+        qw.like("work_title", "光").or().eq("style", "人像");
         List<PhotoWorkPlus> list = mapper.selectList(qw);
         assertNotNull(list);
         for (PhotoWorkPlus w : list) {
-            assertTrue(w.getWorkTitle().contains("光") || "人像".equals(w.getShootType()));
+            assertTrue(w.getWorkTitle().contains("光") || "人像".equals(w.getStyle()));
         }
     }
 
     @Test
     public void testPagination() {
-        IPage<PhotoWorkPlus> page = mapper.selectPage(new Page<>(1, 2), null);
+        IPage<PhotoWorkPlus> page = mapper.selectPage(new Page<>(1, 5), null);
         assertTrue(page.getTotal() >= 6);
-        assertEquals(2, page.getRecords().size());
-        assertTrue(page.getPages() >= 3);
+        assertEquals(5, page.getRecords().size());
+        assertTrue(page.getPages() >= 2);
     }
 }

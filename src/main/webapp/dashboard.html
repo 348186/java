@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>摄影作品台账</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <header class="dashboard-header">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="9" width="26" height="18" rx="3"/>
+          <path d="M11 9l2-4h6l2 4"/>
+          <circle cx="16" cy="18" r="5"/>
+          <circle cx="24.5" cy="13" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="brand-name">光影</span>
+        <span class="brand-en">Photo Ledger</span>
+      </div>
+      <button class="logout-btn" id="logout" type="button">退出登录</button>
+    </header>
+
+    <main class="dashboard-body">
+      <h2>作品概览</h2>
+      <p class="desc">欢迎回来，管理员。以下是摄影作品台账的示例数据。</p>
+
+      <section class="stats">
+        <div class="stat">
+          <div class="num">23</div>
+          <div class="label">摄影作品</div>
+        </div>
+        <div class="stat">
+          <div class="num">14</div>
+          <div class="label">签约摄影师</div>
+        </div>
+        <div class="stat">
+          <div class="num">13</div>
+          <div class="label">作品风格</div>
+        </div>
+      </section>
+
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>作品标题</th>
+            <th>拍摄地点</th>
+            <th>风格</th>
+            <th>定价</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>晨光里的她</td>
+            <td>上海 武康路</td>
+            <td>人像</td>
+            <td>¥1200.00</td>
+            <td><span class="status">可展示</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>雪山黎明</td>
+            <td>四川 贡嘎</td>
+            <td>风光</td>
+            <td>¥2600.00</td>
+            <td><span class="status">可展示</span></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>冬季新品大片</td>
+            <td>北京 798</td>
+            <td>商业</td>
+            <td>¥4500.00</td>
+            <td><span class="status off">已下架</span></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>冰岛极光</td>
+            <td>冰岛 雷克雅未克</td>
+            <td>旅拍</td>
+            <td>¥6800.00</td>
+            <td><span class="status">可展示</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

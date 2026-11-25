@@ -23,21 +23,21 @@ public class PlusMain {
             System.out.println("===== 1. BaseMapper 查询全部 =====");
             mapper.selectList(null).forEach(System.out::println);
 
-            System.out.println("\n===== 2. 条件构造器：题材=人像 且 价格>=1500 =====");
+            System.out.println("\n===== 2. 条件构造器：风格=人像 且 价格>=1200 =====");
             QueryWrapper<PhotoWorkPlus> qw = new QueryWrapper<>();
-            qw.eq("shoot_type", "人像").ge("price", 1500).orderByDesc("shoot_date");
+            qw.eq("style", "人像").ge("price", 1200).orderByDesc("shoot_date");
             List<PhotoWorkPlus> list = mapper.selectList(qw);
             list.forEach(System.out::println);
 
-            System.out.println("\n===== 3. 分页查询：第 1 页，每页 4 条 =====");
-            IPage<PhotoWorkPlus> page = mapper.selectPage(new Page<>(1, 4), null);
+            System.out.println("\n===== 3. 分页查询：第 1 页，每页 5 条 =====");
+            IPage<PhotoWorkPlus> page = mapper.selectPage(new Page<>(1, 5), null);
             System.out.println("总记录数=" + page.getTotal() + ", 总页数=" + page.getPages()
                     + ", 当前页条数=" + page.getRecords().size());
             page.getRecords().forEach(System.out::println);
 
             System.out.println("\n===== 4. 新增 + 按主键修改 + 删除 =====");
-            PhotoWorkPlus work = new PhotoWorkPlus("测试作品", "苏晴", "静物", "B影棚",
-                    new java.util.Date(), new BigDecimal("1.5"), new BigDecimal("999.00"), 1);
+            PhotoWorkPlus work = new PhotoWorkPlus(1, "MP测试作品", "上海 测试路",
+                    new java.util.Date(), "风光", new BigDecimal("999.00"), 1);
             int inserted = mapper.insert(work);
             session.commit();
             System.out.println("新增行数=" + inserted + ", 回填主键=" + work.getWorkId());

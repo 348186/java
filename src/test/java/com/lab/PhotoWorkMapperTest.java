@@ -17,7 +17,6 @@ import static org.junit.Assert.*;
 
 /**
  * 手写 XML Mapper 的 JUnit4 单元测试。
- * 每个用例自己开启会话，结束时清理新增数据，避免污染实验数据。
  */
 public class PhotoWorkMapperTest {
     private SqlSession session;
@@ -36,19 +35,31 @@ public class PhotoWorkMapperTest {
         }
     }
 
+    private PhotoWork sample(String title) throws Exception {
+        return new PhotoWork(1, title, "上海 测试路",
+                new SimpleDateFormat("yyyy-MM-dd").parse("2025-08-01"),
+                "风光", new BigDecimal("500.00"), 1);
+    }
+
+    private void clean(PhotoWork work) {
+        if (work != null && work.getWorkId() != null && mapper.selectById(work.getWorkId()) != null) {
+            mapper.deleteById(work.getWorkId());
+            session.commit();
+        }
+    }
+
     @Test
     public void testSelectAll() {
         List<PhotoWork> list = mapper.selectAll();
         assertNotNull(list);
         assertTrue("摄影作品表不应为空", list.size() >= 6);
         assertNotNull(list.get(0).getWorkTitle());
+        assertNotNull("联表查询应带出摄影师姓名", list.get(0).getPhotographerName());
     }
 
     @Test
     public void testInsertAndSelectById() throws Exception {
-        PhotoWork work = new PhotoWork("JUnit测试作品", "测试摄影师", "静物", "测试影棚",
-                new SimpleDateFormat("yyyy-MM-dd").parse("2025-08-01"),
-                new BigDecimal("1.0"), new BigDecimal("500.00"), 1);
+        PhotoWork work = sample("JUnit测试作品");
         try {
             assertEquals(1, mapper.insert(work));
             session.commit();
@@ -58,19 +69,15 @@ public class PhotoWorkMapperTest {
             assertNotNull(found);
             assertEquals("JUnit测试作品", found.getWorkTitle());
             assertEquals(new BigDecimal("500.00"), found.getPrice());
+            assertEquals(Integer.valueOf(1), found.getPhotographerId());
         } finally {
-            if (work.getWorkId() != null) {
-                mapper.deleteById(work.getWorkId());
-                session.commit();
-            }
+            clean(work);
         }
     }
 
     @Test
     public void testUpdate() throws Exception {
-        PhotoWork work = new PhotoWork("待更新作品", "程野", "街拍", "测试外景",
-                new SimpleDateFormat("yyyy-MM-dd").parse("2025-08-02"),
-                new BigDecimal("2.0"), new BigDecimal("600.00"), 1);
+        PhotoWork work = sample("待更新作品");
         try {
             mapper.insert(work);
             session.commit();
@@ -80,38 +87,34 @@ public class PhotoWorkMapperTest {
             assertEquals(1, mapper.update(work));
             session.commit();
 
-            assertEquals("已更新作品", mapper.selectById(work.getWorkId()).getWorkTitle());
-            assertEquals(new BigDecimal("700.00"), mapper.selectById(work.getWorkId()).getPrice());
+            PhotoWork actual = mapper.selectById(work.getWorkId());
+            assertEquals("已更新作品", actual.getWorkTitle());
+            assertEquals(new BigDecimal("700.00"), actual.getPrice());
         } finally {
-            if (work.getWorkId() != null) {
-                mapper.deleteById(work.getWorkId());
-                session.commit();
-            }
+            clean(work);
         }
     }
 
     @Test
     public void testDynamicCondition() {
         PhotoWork cond = new PhotoWork();
-        cond.setShootType("人像");
+        cond.setStyle("人像");
         cond.setStatus(1);
         List<PhotoWork> list = mapper.selectByCondition(cond);
         assertFalse(list.isEmpty());
         for (PhotoWork w : list) {
-            assertEquals("人像", w.getShootType());
+            assertEquals("人像", w.getStyle());
             assertEquals(Integer.valueOf(1), w.getStatus());
         }
 
         PhotoWork cond2 = new PhotoWork();
-        cond2.setPhotographer("不存在的摄影师");
+        cond2.setWorkTitle("不存在的作品标题");
         assertTrue(mapper.selectByCondition(cond2).isEmpty());
     }
 
     @Test
     public void testUpdateSelective() throws Exception {
-        PhotoWork work = new PhotoWork("局部更新作品", "林越", "风光", "测试外景",
-                new SimpleDateFormat("yyyy-MM-dd").parse("2025-08-03"),
-                new BigDecimal("3.0"), new BigDecimal("800.00"), 1);
+        PhotoWork work = sample("局部更新作品");
         try {
             mapper.insert(work);
             session.commit();
@@ -124,23 +127,16 @@ public class PhotoWorkMapperTest {
 
             PhotoWork actual = mapper.selectById(work.getWorkId());
             assertEquals(new BigDecimal("888.00"), actual.getPrice());
-            assertEquals("局部更新作品", actual.getWorkTitle()); // 未传字段保持不变
+            assertEquals("局部更新作品", actual.getWorkTitle());
         } finally {
-            if (work.getWorkId() != null) {
-                mapper.deleteById(work.getWorkId());
-                session.commit();
-            }
+            clean(work);
         }
     }
 
     @Test
     public void testBatchInsertAndDelete() throws Exception {
-        PhotoWork a = new PhotoWork("批量A", "苏晴", "风光", "影棚A",
-                new SimpleDateFormat("yyyy-MM-dd").parse("2025-08-04"),
-                new BigDecimal("1.0"), new BigDecimal("100.00"), 1);
-        PhotoWork b = new PhotoWork("批量B", "苏晴", "风光", "影棚B",
-                new SimpleDateFormat("yyyy-MM-dd").parse("2025-08-05"),
-                new BigDecimal("2.0"), new BigDecimal("200.00"), 1);
+        PhotoWork a = sample("批量A");
+        PhotoWork b = sample("批量B");
         try {
             assertEquals(2, mapper.insertBatch(Arrays.asList(a, b)));
             session.commit();
@@ -150,19 +146,20 @@ public class PhotoWorkMapperTest {
             assertEquals(2, mapper.deleteByIds(new Integer[]{a.getWorkId(), b.getWorkId()}));
             session.commit();
         } finally {
-            if (a.getWorkId() != null && mapper.selectById(a.getWorkId()) != null) {
-                mapper.deleteById(a.getWorkId());
-                session.commit();
-            }
-            if (b.getWorkId() != null && mapper.selectById(b.getWorkId()) != null) {
-                mapper.deleteById(b.getWorkId());
-                session.commit();
-            }
+            clean(a);
+            clean(b);
         }
     }
 
     @Test
-    public void testGroupByShootType() {
-        assertFalse(mapper.groupByShootType().isEmpty());
+    public void testSelectByChoice() {
+        assertFalse(mapper.selectByChoice("风光", null).isEmpty());
+        assertFalse(mapper.selectByChoice(null, 1).isEmpty());
+        assertFalse(mapper.selectByChoice(null, null).isEmpty());
+    }
+
+    @Test
+    public void testGroupByStyle() {
+        assertFalse(mapper.groupByStyle().isEmpty());
     }
 }

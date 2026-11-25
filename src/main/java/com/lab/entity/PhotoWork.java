@@ -5,31 +5,29 @@ import java.util.Date;
 
 /**
  * 摄影作品实体，对应 photo_work 表。
- * 采用 Date/BigDecimal 包装类型，便于映射与空值处理。
+ * photographerName 为联表查询得到的冗余展示字段，不对应 photo_work 列。
  */
 public class PhotoWork {
     private Integer workId;
+    private Integer photographerId;
     private String workTitle;
-    private String photographer;
-    private String shootType;
-    private String studio;
+    private String location;
     private Date shootDate;
-    private BigDecimal retouchHours;
+    private String style;
     private BigDecimal price;
     private Integer status;
+    private String photographerName;
 
     public PhotoWork() {
     }
 
-    public PhotoWork(String workTitle, String photographer, String shootType,
-                     String studio, Date shootDate, BigDecimal retouchHours,
-                     BigDecimal price, Integer status) {
+    public PhotoWork(Integer photographerId, String workTitle, String location,
+                     Date shootDate, String style, BigDecimal price, Integer status) {
+        this.photographerId = photographerId;
         this.workTitle = workTitle;
-        this.photographer = photographer;
-        this.shootType = shootType;
-        this.studio = studio;
+        this.location = location;
         this.shootDate = shootDate;
-        this.retouchHours = retouchHours;
+        this.style = style;
         this.price = price;
         this.status = status;
     }
@@ -42,6 +40,14 @@ public class PhotoWork {
         this.workId = workId;
     }
 
+    public Integer getPhotographerId() {
+        return photographerId;
+    }
+
+    public void setPhotographerId(Integer photographerId) {
+        this.photographerId = photographerId;
+    }
+
     public String getWorkTitle() {
         return workTitle;
     }
@@ -50,28 +56,12 @@ public class PhotoWork {
         this.workTitle = workTitle;
     }
 
-    public String getPhotographer() {
-        return photographer;
+    public String getLocation() {
+        return location;
     }
 
-    public void setPhotographer(String photographer) {
-        this.photographer = photographer;
-    }
-
-    public String getShootType() {
-        return shootType;
-    }
-
-    public void setShootType(String shootType) {
-        this.shootType = shootType;
-    }
-
-    public String getStudio() {
-        return studio;
-    }
-
-    public void setStudio(String studio) {
-        this.studio = studio;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Date getShootDate() {
@@ -82,12 +72,12 @@ public class PhotoWork {
         this.shootDate = shootDate;
     }
 
-    public BigDecimal getRetouchHours() {
-        return retouchHours;
+    public String getStyle() {
+        return style;
     }
 
-    public void setRetouchHours(BigDecimal retouchHours) {
-        this.retouchHours = retouchHours;
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     public BigDecimal getPrice() {
@@ -106,14 +96,25 @@ public class PhotoWork {
         this.status = status;
     }
 
+    public String getPhotographerName() {
+        return photographerName;
+    }
+
+    public void setPhotographerName(String photographerName) {
+        this.photographerName = photographerName;
+    }
+
     @Override
     public String toString() {
-        return "PhotoWork{workId=" + workId + ", workTitle='" + workTitle + '\''
-                + ", photographer='" + photographer + '\''
-                + ", shootType='" + shootType + '\''
-                + ", studio='" + studio + '\''
+        return "PhotoWork{workId=" + workId
+                + ", photographerId=" + photographerId
+                + ", workTitle='" + workTitle + '\''
+                + ", location='" + location + '\''
                 + ", shootDate=" + shootDate
-                + ", retouchHours=" + retouchHours
-                + ", price=" + price + ", status=" + status + '}';
+                + ", style='" + style + '\''
+                + ", price=" + price
+                + ", status=" + status
+                + (photographerName == null ? "" : ", photographerName='" + photographerName + '\'')
+                + '}';
     }
 }

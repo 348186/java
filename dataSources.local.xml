@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-253.31033.145">
-    <data-source name="DB" uuid="b2786b13-f908-4852-b7a5-3e9e45059206">
-      <database-info product="MySQL" version="9.5.0" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-9.7.0 (Revision: 0aade1f13bcc98faf7dda5c02e782481eb291f62)" dbms="MYSQL" exact-version="9.5.0" exact-driver-version="9.7">
-        <extra-name-characters>$</extra-name-characters>
+    <data-source name="@localhost" uuid="305a842b-9e01-48a5-9179-bb6081f469dc">
+      <database-info product="MySQL" version="9.5.0" jdbc-version="4.2" driver-name="Amazon Web Services (AWS) Advanced JDBC Wrapper" driver-version="Amazon Web Services (AWS) Advanced JDBC Wrapper 2.3.7 ( Revision: 7591851e8da4e1c705ba232a8bd07824a5cfd276 )" dbms="MYSQL" exact-version="9.5.0" exact-driver-version="2.3">
+        <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />

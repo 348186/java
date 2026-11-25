@@ -22,8 +22,8 @@ public final class MybatisPlusUtil {
     static {
         UnpooledDataSource dataSource = new UnpooledDataSource(
                 "com.mysql.cj.jdbc.Driver",
-                "jdbc:mysql://localhost:3306/photo_studio?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8",
-                "root", "root");
+                "jdbc:mysql://localhost:3306/photo_studio?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&characterEncoding=utf8",
+                "root", "348186");
 
         Environment env = new Environment("dev", new JdbcTransactionFactory(), dataSource);
 
